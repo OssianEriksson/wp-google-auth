@@ -1,0 +1,15 @@
+{
+    "name": "wp-google-auth",
+    "author": "Ossian Eriksson",
+    "license": "GPL-3.0",
+    "private": true,
+    "scripts": {
+        "start": "npx wp-env start",
+        "stop": "npx wp-env stop",
+        "lint": "vendor/bin/phpcs --ignore=vendor/,node_modules/ --extensions=php --standard=Wordpress .",
+        "format": "vendor/bin/phpcbf --ignore=vendor/,node_modules/ --extensions=php --standard=Wordpress ."
+    },
+    "devDependencies": {
+        "@wordpress/env": "^4.1.3"
+    }
+}

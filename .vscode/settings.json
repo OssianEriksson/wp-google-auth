@@ -1,0 +1,10 @@
+{
+  "phpSniffer.autoDetect": true,
+  "phpSniffer.run": "onSave",
+  "phpSniffer.standard": "WordPress",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[php]": {
+    "editor.defaultFormatter": "wongjn.php-sniffer"
+  }
+}
