@@ -34,4 +34,18 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+chdir( __DIR__ );
+
 require_once __DIR__ . '/vendor/autoload.php';
+
+$settings = new Settings();
+$settings->register_hooks();
+
+/**
+ * Removes all traces of the plugin
+ */
+function uninstall() {
+	$settings->remove_options();
+}
+
+register_uninstall_hook( __FILE__, 'uninstall' );

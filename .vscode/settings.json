@@ -6,5 +6,6 @@
   "editor.formatOnSave": true,
   "[php]": {
     "editor.defaultFormatter": "wongjn.php-sniffer"
-  }
+  },
+  "prettier.tabWidth": 4
 }
