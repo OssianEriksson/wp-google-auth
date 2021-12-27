@@ -1,6 +1,6 @@
 <?php
 /**
- * Main plugin file
+ * Class for logging
  *
  * WP Google Auth
  * Copyright (C) 2021  Ossian Eriksson
@@ -18,35 +18,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * Plugin Name: WP Google Auth
- * Description: WordPress plugin for syncing WordPress users with Google Workspace users.
- * Version: 1.0.0
- * Author: Ossian Eriksson
- * Author URI: https://github.com/OssianEriksson
- * Licence: GLP-3.0
- *
  * @package ftek/wp-google-auth
  */
 
 namespace Ftek\WPGoogleAuth;
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-chdir( __DIR__ );
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-$settings = new Settings();
-$oauth    = new OAuth( $settings );
-
 /**
- * Removes all traces of the plugin
+ * Loggin utils.
  */
-function uninstall() {
-	Settings::clean();
-	Endpoints::clean();
-}
+class Logger {
 
-register_uninstall_hook( __FILE__, 'uninstall' );
+	/**
+	 * Logs an error if WP_DEBUG is true
+	 *
+	 * @param string $message Value to log.
+	 */
+	public static function error( string $message ) : void {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) {
+            // phpcs:disable WordPress.PHP.DevelopmentFunctions
+			error_log( $message );
+            // phpcs:enable
+		}
+	}
+}
