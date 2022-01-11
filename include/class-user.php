@@ -38,6 +38,28 @@ class User {
 			9,
 			5
 		);
+		add_filter(
+			'show_password_fields',
+			array( $this, 'show_password_fields' ),
+			2,
+			10
+		);
+		add_filter(
+			'allow_password_reset',
+			array( $this, 'allow_password_reset' ),
+			2,
+			10
+		);
+		add_filter(
+			'user_profile_picture_description',
+			array( $this, 'user_profile_picture_description' ),
+			2,
+			10
+		);
+		add_action(
+			'personal_options',
+			array( $this, 'personal_options' )
+		);
 	}
 
 	/**
@@ -73,6 +95,69 @@ class User {
 	}
 
 	/**
+	 * Callback for the show_password_fields filter hook
+	 *
+	 * Disables password resets
+	 *
+	 * @param bool     $show Whether to show the password fields.
+	 * @param \WP_User $user User object for the current user to edit.
+	 */
+	public function show_password_fields( bool $show, \WP_User $user ): bool {
+		return $this->allow_password_reset( $show, $user->ID );
+	}
+
+	/**
+	 * Callback for the allow_password_reset filter hook
+	 *
+	 * Disables password resets
+	 *
+	 * @param bool $allow   Whether to allow the password to be reset.
+	 * @param int  $user_id The ID of the user attempting to reset a password.
+	 */
+	public function allow_password_reset( bool $allow, int $user_id ): bool {
+		if ( ! $this->get_meta_fields( $user_id )['is_google_user'] ) {
+			return $allow;
+		}
+		return false;
+	}
+
+	/**
+	 * Callback for the user_profile_picture_description filter hook
+	 *
+	 * Removes profile description
+	 *
+	 * @param string   $description The description that will be printed.
+	 * @param \WP_User $user        The current WP_User object.
+	 */
+	public function user_profile_picture_description( string $description, \WP_User $user ): string {
+		if ( ! $this->get_meta_fields( $user->ID )['is_google_user'] ) {
+			return $description;
+		}
+		return '';
+	}
+
+	/**
+	 * Callback for the personal_options action hook
+	 *
+	 * Disables editing of some fields tied to the user's Google account
+	 *
+	 * @param \WP_User $user The current WP_User object.
+	 */
+	public function personal_options( \WP_User $user ): void {
+		if ( ! $this->get_meta_fields( $user->ID )['is_google_user'] ) {
+			return;
+		}
+
+		?>
+		<script type="text/javascript">
+			jQuery( document ).ready(function( $ ){
+				$( '#first_name, #last_name, #email', '#your-profile' ).prop( "disabled", true );
+			} );
+		</script>
+		<?php
+	}
+
+	/**
 	 * Retrieve a custom meta fields for a user
 	 *
 	 * @param int $user_id User ID.
@@ -81,7 +166,8 @@ class User {
 		$meta = get_user_meta( $user_id, 'wp_google_auth', true );
 		return array_merge(
 			array(
-				'picture' => '',
+				'picture'        => '',
+				'is_google_user' => false,
 			),
 			empty( $meta ) ? array() : $meta
 		);
@@ -91,7 +177,7 @@ class User {
 	 * Update a custom meta fields for a user
 	 *
 	 * @param int   $user_id User ID.
-	 * @param array $meta   Metadata fields.
+	 * @param array $meta    Metadata fields.
 	 */
 	public static function update_meta_fields( int $user_id, array $meta ): void {
 		update_user_meta( $user_id, 'wp_google_auth', $meta );

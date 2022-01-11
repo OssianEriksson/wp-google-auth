@@ -245,20 +245,21 @@ class Login {
 				'display_name' => 'name',
 			) as $meta_key => $user_info_key
 		) {
-			if ( isset( $user_info[ $meta_key ] ) ) {
+			if ( isset( $user_info[ $user_info_key ] ) ) {
 				update_user_meta(
 					$user->ID,
 					$meta_key,
-					$user_info[ $meta_key ]
+					$user_info[ $user_info_key ]
 				);
 			}
 		}
 
+		$meta = User::get_meta_fields( $user->ID );
 		if ( isset( $user_info['picture'] ) ) {
-			$meta            = User::get_meta_fields( $user->ID );
-			$meta['picture'] = $user_info['picture'];
-			User::update_meta_fields( $user->ID, $meta );
+			$meta['picture']        = $user_info['picture'];
+			$meta['is_google_user'] = true;
 		}
+		User::update_meta_fields( $user->ID, $meta );
 
 		return $user;
 	}
