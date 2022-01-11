@@ -52,6 +52,7 @@ class Settings {
 			array(
 				'client_id'     => '',
 				'client_secret' => '',
+				'email_regex'   => '.*',
 				'cache_refresh' => 24,
 				'error'         => true,
 			),
@@ -77,6 +78,17 @@ class Settings {
 			function(): void {
 				?>
 				<p><?php esc_html_e( 'Enter Google OAuth2 credentials aquired from Google Workspace.', 'wp_google_auth' ); ?><p>
+				<p>
+					<?php
+					printf(
+					// translators: %1$s: Anchor attributes.
+					// translators: %2$s: URI.
+						wp_kses_post( __( 'To get your Google API client, <a %1$s>follow these instructions</a>. Make sure to enter %2$s as an allowed redirect URI.', 'wp_google_auth' ) ),
+						'href="https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid" target="_blank" rel="noopener noreferrer"',
+						'<code>' . esc_html( OAuth::get_redirect_uri() ) . '</code>'
+					)
+					?>
+				</p>
 				<?php
 			},
 			'wp_google_auth_option_group'
@@ -123,6 +135,21 @@ class Settings {
 			'wp_google_auth_option_group'
 		);
 
+		add_settings_field(
+			'wp_google_auth_settings_field_email_regex',
+			__( 'Email whitelist regex', 'wp_google_auth' ),
+			function(): void {
+				$setting     = 'email_regex';
+				$placeholder = '(accounting|hr)\.\w+@mydomain\.com';
+				$value       = $this->get( $setting );
+				?>
+				<input type="text" name="wp_google_auth_option[<?php echo esc_attr( $setting ); ?>]" value="<?php echo esc_attr( $value ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" class="large-text">
+				<?php
+			},
+			'wp_google_auth_option_group',
+			'wp_google_auth_settings_section_rules'
+		);
+
 		add_settings_section(
 			'wp_google_auth_settings_section_misc',
 			__( 'Miscellaneous', 'wp_google_auth' ),
@@ -156,11 +183,11 @@ class Settings {
 
 		$oauth    = new OAuth( $this );
 		$auth_url = $oauth->get_authorization_url( $option['client_id'] );
-		if ( isempty( $auth_url ) ) {
+		if ( empty( $auth_url ) ) {
 			add_settings_error(
 				'wp_google_auth_option',
 				'wp_google_auth_discovery_doc',
-				__( 'There was an error reading the Google API discovery document, please try again later. If the problem persists, contact the plugin developers.', 'wp_google_auth' ),
+				__( 'There was an error reading the Google API discovery document, please try again later.', 'wp_google_auth' ),
 				'error'
 			);
 			$option['error'] = true;
@@ -202,6 +229,15 @@ class Settings {
 				'wp_google_auth_cache_refresh',
 				__( 'Cache refresh interval was changed to a non-negative integer.', 'wp_google_auth' ),
 				'updated'
+			);
+		}
+
+		if ( ! $option['error'] ) {
+			add_settings_error(
+				'wp_google_auth_option',
+				'wp_google_auth_success',
+				__( 'Settings saved. Please test out the login functionality to verify that everything is working as expected.', 'wp_google_auth' ),
+				'success'
 			);
 		}
 

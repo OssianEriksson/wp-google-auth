@@ -77,7 +77,11 @@ class Endpoints {
 
 			if ( ! $this->endpoints ) {
 				$this->endpoints = $this->fetch_endpoints(
-					array( 'authorization_endpoint' )
+					array(
+						'authorization_endpoint',
+						'token_endpoint',
+						'userinfo_endpoint',
+					)
 				);
 
 				update_option(
@@ -102,8 +106,7 @@ class Endpoints {
 			return null;
 		}
 
-		$body     = wp_remote_retrieve_body( $response );
-		$document = json_decode( $body, true );
+		$document = json_decode( wp_remote_retrieve_body( $response ), true );
 		if ( ! $document ) {
 			Logger::error( 'Error while parsing discovery document fetched from ' . self::DISCOVERY_DOCUMENT_URL );
 			return null;

@@ -1,6 +1,6 @@
 <?php
 /**
- * Main plugin file
+ * Class for logging
  *
  * WP Google Auth
  * Copyright (C) 2021  Ossian Eriksson
@@ -18,37 +18,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * Plugin Name: WP Google Auth
- * Description: WordPress plugin for syncing WordPress users with Google Workspace users.
- * Version: 1.0.0
- * Author: Ossian Eriksson
- * Author URI: https://github.com/OssianEriksson
- * Licence: GLP-3.0
- *
  * @package ftek/wp-google-auth
  */
 
 namespace Ftek\WPGoogleAuth;
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-chdir( __DIR__ );
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-$settings = new Settings();
-if ( $settings->get( 'error' ) === false ) {
-	$login = new Login( $settings );
-}
-
 /**
- * Removes persistant data
+ * User utils.
  */
-function clean() {
-	Settings::clean();
-	Endpoints::clean();
-}
+class User {
 
-register_uninstall_hook( __FILE__, 'clean' );
+	/**
+	 * Retrieve a custom meta fields for a user
+	 *
+	 * @param int $user_id User ID.
+	 */
+	public static function get_meta_fields( int $user_id ): array {
+		$meta = get_user_meta( $user_id, 'wp_google_auth', true );
+		return array_merge(
+			array(
+				'picture' => '',
+			),
+			empty( $meta ) ? array() : $meta
+		);
+	}
+
+	/**
+	 * Update a custom meta fields for a user
+	 *
+	 * @param int   $user_id User ID.
+	 * @param array $meta   Metadata fields.
+	 */
+	public static function update_meta_fields( int $user_id, array $meta ): array {
+		update_user_meta( $user_id, 'wp_google_auth', $meta );
+	}
+}
