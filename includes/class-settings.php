@@ -81,8 +81,7 @@ class Settings {
 				<p>
 					<?php
 					printf(
-					// translators: %1$s: Anchor attributes.
-					// translators: %2$s: URI.
+						// translators: %1$s: Anchor attributes. %2$s: URI.
 						wp_kses_post( __( 'To get your Google API client, <a %1$s>follow these instructions</a>. Make sure to enter %2$s as an allowed redirect URI.', 'wp_google_auth' ) ),
 						'href="https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid" target="_blank" rel="noopener noreferrer"',
 						'<code>' . esc_html( OAuth::get_redirect_uri() ) . '</code>'

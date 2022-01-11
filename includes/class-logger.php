@@ -60,9 +60,9 @@ class Logger {
 	 */
 	public function error( string $message ) : void {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) {
-            // phpcs:disable WordPress.PHP.DevelopmentFunctions
+			// phpcs:disable WordPress.PHP.DevelopmentFunctions
 			error_log( $this->msg_format( $message ) );
-            // phpcs:enable
+			// phpcs:enable
 		}
 	}
 }

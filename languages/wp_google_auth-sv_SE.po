@@ -71,7 +71,7 @@ msgstr "OAuth2-uppgifter"
 msgid "Enter Google OAuth2 credentials aquired from Google Workspace."
 msgstr "Skriv in Google OAuth2-uppgifter hämtade från Google Workspace."
 
-#. translators: %2$s: URI.
+#. translators: %1$s: Anchor attributes. %2$s: URI.
 #: include/class-settings.php:86
 msgid "To get your Google API client, <a %1$s>follow these instructions</a>. Make sure to enter %2$s as an allowed redirect URI."
 msgstr "För att skapa din Google-API-klient, <a %1$s>följ dessa instruktioner</a>. Se till att ange %2$s som en tillåten omdirigerings-URL."

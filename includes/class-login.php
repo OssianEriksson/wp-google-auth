@@ -80,27 +80,27 @@ class Login {
 	 * Callback for login_init action hook
 	 */
 	public function login_init(): void {
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		$loggedout = isset( $_GET['loggedout'] ) ? sanitize_key( $_GET['loggedout'] ) : null;
-        // phpcs:enable
+		// phpcs:enable
 		if ( 'true' === $loggedout ) {
 			wp_safe_redirect( home_url() );
 			exit;
 		}
 
-        // phpcs:disable WordPress.Security.NonceVerification
+		// phpcs:disable WordPress.Security.NonceVerification
 		if ( isset( $_GET['noopenid'] ) || isset( $_POST['wp-submit'] ) ) {
-            // phpcs:enable
+			// phpcs:enable
 			return;
 		}
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		$action = isset( $_GET['action'] ) ? sanitize_key( $_GET['action'] ) : null;
-        // phpcs:enable
+		// phpcs:enable
 		if ( ! in_array( $action, array( 'logout', 'lostpassword', 'rp', 'resetpass' ), true ) ) {
-            // phpcs:disable WordPress.Security.NonceVerification.Recommended
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			$redirect_to = isset( $_REQUEST['redirect_to'] ) ? wp_sanitize_redirect( wp_unslash( $_REQUEST['redirect_to'] ) ) : null;
-            // phpcs:enable
+			// phpcs:enable
 
 			if ( $redirect_to ) {
 				setcookie(
@@ -150,24 +150,24 @@ class Login {
 	 * Callback for init action hook
 	 */
 	public function init(): void {
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( ! isset( $_GET['wp_google_auth_openid'] ) ) {
-            // phpcs:enable
+			// phpcs:enable
 			return;
 		}
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( ! isset( $_GET['code'], $_GET['state'] ) ) {
-            // phpcs:enable
+			// phpcs:enable
 			$this->redirect_to_login_with_error( 'missing_params' );
 			return;
 		}
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		$state = sanitize_key( $_GET['state'] );
-        // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$code = wp_unslash( $_GET['code'] );
-        // phpcs:enable
+		// phpcs:enable
 
 		if ( ! $this->oauth->validate_state( $state ) ) {
 			$this->redirect_to_login_with_error( 'state_mismatch' );
@@ -298,12 +298,12 @@ class Login {
 	 * @param \WP_Error $error WP Error object.
 	 */
 	public function wp_login_errors( \WP_Error $error ): \WP_Error {
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		$action = isset( $_GET['wp_google_auth_error'] ) ? sanitize_key( $_GET['wp_google_auth_error'] ) : null;
-        // phpcs:enable
+		// phpcs:enable
 
 		if ( $action ) {
-            // phpcs:disable WordPress.Security.EscapeOutput.UnsafePrintingFunction
+			// phpcs:disable WordPress.Security.EscapeOutput.UnsafePrintingFunction
 			switch ( $action ) {
 				case 'missing_params':
 					$message = __( '<strong>Error</strong>: Malformatted response to OpenID authentication request. Please try logging in again later.', 'wp_google_auth' );
@@ -326,7 +326,7 @@ class Login {
 				default:
 					$message = __( '<strong>Error</strong>: OpenID login error. Please try logging in again later.', 'wp_google_auth' );
 			}
-            // phpcs:enable
+			// phpcs:enable
 			$error->add( 'wp_google_auth_' . $action, $message );
 
 			$error->add(
