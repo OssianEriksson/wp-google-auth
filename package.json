@@ -7,7 +7,9 @@
         "start": "npx wp-env start",
         "stop": "npx wp-env stop",
         "lint": "vendor/bin/phpcs --ignore=vendor/,node_modules/ --extensions=php --standard=Wordpress .",
-        "format": "vendor/bin/phpcbf --ignore=vendor/,node_modules/ --extensions=php --standard=Wordpress ."
+        "format": "vendor/bin/phpcbf --ignore=vendor/,node_modules/ --extensions=php --standard=Wordpress .",
+        "pot": "vendor/bin/wp i18n make-pot . languages/wp_google_auth.pot",
+        "mo": "find languages/ -name *.po -print -exec sh -c 'msgfmt -o languages/$(basename {} .po).mo {}' \\;"
     },
     "devDependencies": {
         "@wordpress/env": "^4.1.3"

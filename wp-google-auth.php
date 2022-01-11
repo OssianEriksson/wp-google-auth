@@ -21,6 +21,8 @@
  * Plugin Name: WP Google Auth
  * Description: WordPress plugin for syncing WordPress users with Google Workspace users.
  * Version: 1.0.0
+ * Text Domain: wp_google_auth
+ * Domain Path: /languages
  * Author: Ossian Eriksson
  * Author URI: https://github.com/OssianEriksson
  * Licence: GLP-3.0
@@ -42,6 +44,17 @@ $settings = new Settings();
 if ( $settings->get( 'error' ) === false ) {
 	$login = new Login( $settings );
 	$user  = new User();
+
+	add_action(
+		'init',
+		function() {
+			load_plugin_textdomain(
+				'wp_google_auth',
+				false,
+				dirname( plugin_basename( __FILE__ ) ) . '/languages'
+			);
+		}
+	);
 }
 
 /**
