@@ -254,9 +254,9 @@ class Login {
 			}
 		}
 
-		if ( isset( $data['picture'] ) ) {
+		if ( isset( $user_info['picture'] ) ) {
 			$meta            = User::get_meta_fields( $user->ID );
-			$meta['picture'] = $data['picture'];
+			$meta['picture'] = $user_info['picture'];
 			User::update_meta_fields( $user->ID, $meta );
 		}
 

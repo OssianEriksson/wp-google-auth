@@ -41,6 +41,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $settings = new Settings();
 if ( $settings->get( 'error' ) === false ) {
 	$login = new Login( $settings );
+	$user  = new User();
 }
 
 /**
