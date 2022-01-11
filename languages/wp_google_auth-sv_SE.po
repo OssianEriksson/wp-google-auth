@@ -1,0 +1,143 @@
+# Copyright (C) 2022 Ossian Eriksson
+# This file is distributed under the same license as the WP Google Auth plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Google Auth 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-google-auth\n"
+"Last-Translator: Ossian Eriksson\n"
+"Language-Team: Svenska\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-01-11T17:29:19+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: wp_google_auth\n"
+
+#. Plugin Name of the plugin
+msgid "WP Google Auth"
+msgstr "WP Googleautentisering"
+
+#. Description of the plugin
+msgid "WordPress plugin for syncing WordPress users with Google Workspace users."
+msgstr "WordPress-plugin för synkronisering av WordPress-användare med Google Workspace-användare."
+
+#. Author of the plugin
+msgid "Ossian Eriksson"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/OssianEriksson"
+msgstr ""
+
+#: include/class-login.php:300
+msgid "<strong>Error</strong>: Malformatted response to OpenID authentication request. Please try logging in again later."
+msgstr "<strong>Fel</strong>: Felformatterat svar på OpenID-autentiseringsfrågan. Var god försök igen senare."
+
+#: include/class-login.php:303
+msgid "<strong>Error</strong>: Anti-forgery state token mismatch. Please try logging in again."
+msgstr "<strong>Fel</strong>: Anti-förfalskningsnyckeln matchade inte. Var god försök igen senare."
+
+#: include/class-login.php:306
+msgid "<strong>Error</strong>: There was an error reading the Google API discovery document. Please try logging in again later."
+msgstr "<strong>Fel</strong>: Ett problem uppstod vid inläsningen av Google-API:ts katalog. Var god försök igen senare."
+
+#: include/class-login.php:309
+msgid "<strong>Error</strong>: There was an error recieving the Google OAuth access token. Please try logging in again later."
+msgstr "<strong>Fel</strong>: Ett fel uppstod vid mottagandet av en OAuth-accessnyckel från Google. Var god försök igen senare."
+
+#: include/class-login.php:312
+msgid "<strong>Error</strong>: There was an error fetching user info from Google. Please try logging in again later."
+msgstr "<strong>Fel</strong>: Ett fel uppstod vid hämtingen av användarinformation från Google. Var god försök igen senare."
+
+#: include/class-login.php:315
+msgid "<strong>Error</strong>: Sorry, your account cannot login to this site."
+msgstr "<strong>Fel</strong>: Tyvärr, ditt användarkonto kan inte logga in på denna sida. "
+
+#: include/class-login.php:318
+msgid "<strong>Error</strong>: OpenID login error. Please try logging in again later."
+msgstr "<strong>Fel</strong>: Inloggningsfel med OpenID. Var god försök igen senare."
+
+#. translators: %s: Anchor attributes.
+#: include/class-login.php:327
+msgid "Since the Google OpenID login failed, you were taken to the default WordPress login page. If you want to attempt another sign in with Google, click <a %s>here</a>."
+msgstr "Då inloggningen med Googles OpenID misslyckades togs du till den vanliga inloggningssidan för WordPress. Om du vill försöka logga in med Google igen, klicka <a %s>här</a>."
+
+#: include/class-settings.php:77
+msgid "OAuth2 Credentials"
+msgstr "OAuth2-uppgifter"
+
+#: include/class-settings.php:80
+msgid "Enter Google OAuth2 credentials aquired from Google Workspace."
+msgstr "Skriv in Google OAuth2-uppgifter hämtade från Google Workspace."
+
+#. translators: %2$s: URI.
+#: include/class-settings.php:86
+msgid "To get your Google API client, <a %1$s>follow these instructions</a>. Make sure to enter %2$s as an allowed redirect URI."
+msgstr "För att skapa din Google-API-klient, <a %1$s>följ dessa instruktioner</a>. Se till att ange %2$s som en tillåten omdirigerings-URL."
+
+#: include/class-settings.php:99
+msgid "Client ID"
+msgstr "Klient-ID"
+
+#: include/class-settings.php:114
+msgid "Client secret"
+msgstr "Klienthemlighet"
+
+#: include/class-settings.php:129
+msgid "Login Rules"
+msgstr "Inloggningsregler"
+
+#: include/class-settings.php:132
+msgid "Decide which Google Workspace accounts can log in to this WordPress site."
+msgstr "Bestäm vilka Google-Workspace-konton som kan logga in på denna WordPress-sida."
+
+#: include/class-settings.php:140
+msgid "Email whitelist regex"
+msgstr "Regex för vitlistade mejladresser"
+
+#: include/class-settings.php:155
+msgid "Miscellaneous"
+msgstr "Övrigt"
+
+#: include/class-settings.php:162
+msgid "Cache refresh interval"
+msgstr "Cacheuppdateringsintervall"
+
+#: include/class-settings.php:190
+msgid "There was an error reading the Google API discovery document, please try again later."
+msgstr "Ett problem uppstod vid inläsningen av Google-API:ts katalog. Var god försök igen senare."
+
+#. translators: %s: Anchor attributes.
+#: include/class-settings.php:205
+msgid "An OpenID error was detected, click <a %s>here</a> to view the problematic response from Google."
+msgstr "Ett OpenID-fel uppstod, klicka <a %s>här</a> för att visa det problematiska svaret från Google."
+
+#: include/class-settings.php:218
+msgid "Client secret cannot be empty."
+msgstr "Klienthemligheten kan inte lämnas tom."
+
+#: include/class-settings.php:230
+msgid "Cache refresh interval was changed to a non-negative integer."
+msgstr "Cacheuppdateringsintervallet uppdaterades till ett icke-negativt heltal."
+
+#: include/class-settings.php:239
+msgid "Settings saved. Please test out the login functionality to verify that everything is working as expected."
+msgstr "Ändrigarna sparade. Var god att prova inloggningsfuntionaliteten för att säkerställa att allting fungerar som förväntat."
+
+#: include/class-settings.php:252
+#: include/class-settings.php:253
+msgid "Google Auth"
+msgstr "Googleautentisering"
+
+#: include/class-settings.php:259
+msgid "Google Authentication Settings"
+msgstr "Inställningar för googleautentisering"
+
+#: include/class-settings.php:283
+msgid "Overview"
+msgstr "Översikt"
+
+#: include/class-settings.php:287
+msgid "The fields on this screen determine the setup of the Google Workspace integration for authenticating users."
+msgstr "Fälten på denna sida kontrollerar Google Workspace-integrationen för autentisering av användare."
