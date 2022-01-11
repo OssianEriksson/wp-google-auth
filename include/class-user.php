@@ -72,17 +72,27 @@ class User {
 	 * @param string $alt Alternative text to use in the avatar image tag.
 	 */
 	public function get_avatar( string $avatar, $id_or_email, int $size, string $default, string $alt ): string {
-		if ( ! is_numeric( $id_or_email ) ) {
+		if ( is_numeric( $id_or_email ) ) {
+			$user_id = (int) $id_or_email;
+		} elseif ( is_object( $id_or_email ) ) {
+			if ( ! empty( $id_or_email->ID ) ) {
+				$user_id = $id_or_email->ID;
+			} elseif ( ! empty( $id_or_email->user_id ) ) {
+				$user_id = (int) $id_or_email->user_id;
+			} elseif ( ! empty( $id_or_email->post_author ) ) {
+				$user_id = (int) $id_or_email->post_author;
+			} else {
+				return $avatar;
+			}
+		} else {
 			$user = get_user_by( 'email', $id_or_email );
 			if ( ! $user ) {
 				return $avatar;
 			}
 			$user_id = $user->ID;
-		} else {
-			$user_id = $id_or_email;
 		}
 
-		$meta = $this->get_meta_fields( $id_or_email );
+		$meta = $this->get_meta_fields( $user_id );
 		if ( empty( $meta['picture'] ) ) {
 			return $avatar;
 		}
@@ -162,7 +172,7 @@ class User {
 	 *
 	 * @param int $user_id User ID.
 	 */
-	public static function get_meta_fields( int $user_id ): array {
+	public function get_meta_fields( int $user_id ): array {
 		$meta = get_user_meta( $user_id, 'wp_google_auth', true );
 		return array_merge(
 			array(
@@ -179,7 +189,7 @@ class User {
 	 * @param int   $user_id User ID.
 	 * @param array $meta    Metadata fields.
 	 */
-	public static function update_meta_fields( int $user_id, array $meta ): void {
+	public function update_meta_fields( int $user_id, array $meta ): void {
 		update_user_meta( $user_id, 'wp_google_auth', $meta );
 	}
 }

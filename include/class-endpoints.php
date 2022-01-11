@@ -40,9 +40,16 @@ class Endpoints {
 	/**
 	 * Local settings reference
 	 *
-	 * @var Settings $settings
+	 * @var Settings
 	 */
 	private $settings;
+
+	/**
+	 * Logger reference
+	 *
+	 * @var Logger
+	 */
+	private $logger;
 
 	/**
 	 * Endpoints constructor
@@ -51,6 +58,8 @@ class Endpoints {
 	 */
 	public function __construct( Settings $settings ) {
 		$this->settings = $settings;
+
+		$logger = new Logger( get_class() );
 	}
 
 	/**
@@ -102,19 +111,19 @@ class Endpoints {
 		$response = wp_remote_get( self::DISCOVERY_DOCUMENT_URL );
 		$code     = wp_remote_retrieve_response_code( $response );
 		if ( 200 !== $code ) {
-			Logger::error( 'Unexpected status (' . $code . ') when fetching discovery document fetched from ' . self::DISCOVERY_DOCUMENT_URL );
+			$this->logger->error( 'Unexpected status (' . $code . ') when fetching discovery document fetched from ' . self::DISCOVERY_DOCUMENT_URL );
 			return null;
 		}
 
 		$document = json_decode( wp_remote_retrieve_body( $response ), true );
 		if ( ! $document ) {
-			Logger::error( 'Error while parsing discovery document fetched from ' . self::DISCOVERY_DOCUMENT_URL );
+			$this->logger->error( 'Error while parsing discovery document fetched from ' . self::DISCOVERY_DOCUMENT_URL );
 			return null;
 		}
 
 		$document = array_intersect_key( $document, array_flip( $keys ) );
 		if ( count( $keys ) !== count( $document ) ) {
-			Logger::error( 'Missing one of (' . implode( ', ', $keys ) . ') in discovery document fetched from ' . self::DISCOVERY_DOCUMENT_URL );
+			$this->logger->error( 'Missing one of (' . implode( ', ', $keys ) . ') in discovery document fetched from ' . self::DISCOVERY_DOCUMENT_URL );
 			return null;
 		}
 

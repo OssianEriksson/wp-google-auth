@@ -36,6 +36,13 @@ class Login {
 	private $settings;
 
 	/**
+	 * Local user reference
+	 *
+	 * @var User
+	 */
+	private $user;
+
+	/**
 	 * OAuth helper
 	 *
 	 * @var OAuth
@@ -46,9 +53,11 @@ class Login {
 	 * OAuth constructor
 	 *
 	 * @param Settings $settings Settings reference.
+	 * @param User     $user     User reference.
 	 */
-	public function __construct( Settings $settings ) {
+	public function __construct( Settings $settings, User $user ) {
 		$this->settings = $settings;
+		$this->user     = $user;
 
 		$this->oauth = new OAuth( $settings );
 
@@ -254,12 +263,12 @@ class Login {
 			}
 		}
 
-		$meta = User::get_meta_fields( $user->ID );
+		$meta = $this->user->get_meta_fields( $user->ID );
 		if ( isset( $user_info['picture'] ) ) {
 			$meta['picture']        = $user_info['picture'];
 			$meta['is_google_user'] = true;
 		}
-		User::update_meta_fields( $user->ID, $meta );
+		$this->user->update_meta_fields( $user->ID, $meta );
 
 		return $user;
 	}
