@@ -129,7 +129,7 @@ class OAuth {
 	 *
 	 * @param ?array $auth_token Google OAuth access token.
 	 *
-	 * @throws Exception If not auth token is available.
+	 * @throws Exception If auth token is not available.
 	 */
 	public function fetch_user_info( ?array $auth_token = null ): ?array {
 		$urls = $this->endpoints->get();

@@ -160,9 +160,13 @@ class User {
 
 		?>
 		<script type="text/javascript">
-			jQuery( document ).ready(function( $ ){
-				$( '#first_name, #last_name, #email', '#your-profile' ).prop( "disabled", true );
-			} );
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("#your-profile").forEach(yourProfile => {
+					yourProfile.querySelectorAll("#first_name,#last_name,#email").forEach(input => {
+						input.setAttribute("disabled", true);
+					})
+				});
+			});
 		</script>
 		<?php
 	}

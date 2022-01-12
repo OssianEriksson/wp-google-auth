@@ -27,7 +27,7 @@ The instructions here will help you set up a local development environemnt.
     npm run start
     ```
 
-    The development server is noe started at <http://localhost:8888/>.
+    The development server should now be started at <http://localhost:8888/>.
 
 1. When you are done, stop the development environment with
     ```console
