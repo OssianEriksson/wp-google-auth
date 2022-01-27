@@ -311,8 +311,8 @@ class Settings {
 			)
 		);
 
-		$links[] = '<a href="' . $url . '">' . __( 'Settings', 'wp-google-auth' ) . '</a>';
-		return $links;
+		$actions[] = '<a href="' . $url . '">' . __( 'Settings', 'wp-google-auth' ) . '</a>';
+		return $actions;
 	}
 
 	/**
