@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Google Auth 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-google-auth\n"
-"POT-Creation-Date: 2022-01-27T14:38:47+00:00\n"
+"POT-Creation-Date: 2022-01-27T14:47:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ossian Eriksson\n"
 "Language-Team: Svenska\n"
@@ -98,16 +98,16 @@ msgstr ""
 "inloggningssidan för WordPress. Om du vill försöka logga in med Google igen, "
 "klicka <a %s>här</a>."
 
-#: includes/class-settings.php:77
+#: includes/class-settings.php:81
 msgid "OAuth2 Credentials"
 msgstr "OAuth2-uppgifter"
 
-#: includes/class-settings.php:80
+#: includes/class-settings.php:84
 msgid "Enter Google OAuth2 credentials aquired from Google Workspace."
 msgstr "Skriv in Google OAuth2-uppgifter hämtade från Google Workspace."
 
 #. translators: %1$s: Anchor attributes. %2$s: URI.
-#: includes/class-settings.php:85
+#: includes/class-settings.php:89
 msgid ""
 "To get your Google API client, <a %1$s>follow these instructions</a>. Make "
 "sure to enter %2$s as an allowed redirect URI."
@@ -115,38 +115,38 @@ msgstr ""
 "För att skapa din Google-API-klient, <a %1$s>följ dessa instruktioner</a>. "
 "Se till att ange %2$s som en tillåten omdirigerings-URL."
 
-#: includes/class-settings.php:98
+#: includes/class-settings.php:102
 msgid "Client ID"
 msgstr "Klient-ID"
 
-#: includes/class-settings.php:113
+#: includes/class-settings.php:117
 msgid "Client secret"
 msgstr "Klienthemlighet"
 
-#: includes/class-settings.php:128
+#: includes/class-settings.php:132
 msgid "Login Rules"
 msgstr "Inloggningsregler"
 
-#: includes/class-settings.php:131
+#: includes/class-settings.php:135
 msgid ""
 "Decide which Google Workspace accounts can log in to this WordPress site."
 msgstr ""
 "Bestäm vilka Google-Workspace-konton som kan logga in på denna WordPress-"
 "sida."
 
-#: includes/class-settings.php:139
+#: includes/class-settings.php:143
 msgid "Email whitelist regex"
 msgstr "Regex för vitlistade mejladresser"
 
-#: includes/class-settings.php:154
+#: includes/class-settings.php:158
 msgid "Miscellaneous"
 msgstr "Övrigt"
 
-#: includes/class-settings.php:161
+#: includes/class-settings.php:165
 msgid "Cache refresh interval"
 msgstr "Cacheuppdateringsintervall"
 
-#: includes/class-settings.php:189
+#: includes/class-settings.php:193
 msgid ""
 "There was an error reading the Google API discovery document, please try "
 "again later."
@@ -155,7 +155,7 @@ msgstr ""
 "igen senare."
 
 #. translators: %s: Anchor attributes.
-#: includes/class-settings.php:204
+#: includes/class-settings.php:208
 msgid ""
 "An OpenID error was detected, click <a %s>here</a> to view the problematic "
 "response from Google."
@@ -163,16 +163,16 @@ msgstr ""
 "Ett OpenID-fel uppstod, klicka <a %s>här</a> för att visa det problematiska "
 "svaret från Google."
 
-#: includes/class-settings.php:217
+#: includes/class-settings.php:221
 msgid "Client secret cannot be empty."
 msgstr "Klienthemligheten kan inte lämnas tom."
 
-#: includes/class-settings.php:229
+#: includes/class-settings.php:233
 msgid "Cache refresh interval was changed to a non-negative integer."
 msgstr ""
 "Cacheuppdateringsintervallet uppdaterades till ett icke-negativt heltal."
 
-#: includes/class-settings.php:238
+#: includes/class-settings.php:242
 msgid ""
 "Settings saved. Please test out the login functionality to verify that "
 "everything is working as expected."
@@ -180,22 +180,26 @@ msgstr ""
 "Ändrigarna sparade. Var god att prova inloggningsfuntionaliteten för att "
 "säkerställa att allting fungerar som förväntat."
 
-#: includes/class-settings.php:251 includes/class-settings.php:252
+#: includes/class-settings.php:255 includes/class-settings.php:256
 msgid "Google Auth"
 msgstr "Googleautentisering"
 
-#: includes/class-settings.php:258
+#: includes/class-settings.php:262
 msgid "Google Authentication Settings"
 msgstr "Inställningar för googleautentisering"
 
-#: includes/class-settings.php:282
+#: includes/class-settings.php:286
 msgid "Overview"
 msgstr "Översikt"
 
-#: includes/class-settings.php:286
+#: includes/class-settings.php:290
 msgid ""
 "The fields on this screen determine the setup of the Google Workspace "
 "integration for authenticating users."
 msgstr ""
 "Fälten på denna sida kontrollerar Google Workspace-integrationen för "
 "autentisering av användare."
+
+#: includes/class-settings.php:314
+msgid "Settings"
+msgstr "Inställningar"

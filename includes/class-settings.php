@@ -40,6 +40,10 @@ class Settings {
 			'admin_menu',
 			array( $this, 'add_settings_page' )
 		);
+		add_filter(
+			'plugin_action_links_wp-google-auth/wp-google-auth.php',
+			array( $this, 'plugin_action_links' )
+		);
 	}
 
 	/**
@@ -288,6 +292,27 @@ class Settings {
 				},
 			)
 		);
+	}
+
+	/**
+	 * Callback for the plugin_action_links filter hook
+	 *
+	 * Adds a link to the plugin settings on the entry in the list of plugins
+	 * on the WordPress admin plugins page.
+	 *
+	 * @param array $actions An array of plugin action links.
+	 */
+	public function plugin_action_links( array $actions ): array {
+		$url = esc_url(
+			add_query_arg(
+				'page',
+				'wp_google_auth',
+				get_admin_url() . 'admin.php'
+			)
+		);
+
+		$links[] = '<a href="' . $url . '">' . __( 'Settings', 'wp_google_auth' ) . '</a>';
+		return $links;
 	}
 
 	/**
