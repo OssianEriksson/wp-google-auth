@@ -77,10 +77,10 @@ Generate a [POT file](https://developer.wordpress.org/plugins/internationalizati
 npm run lang:pot
 ```
 
-Next, copy the generated POT file to a PO file named `wp_google_auth-{locale}.po`, for example
+Next, copy the generated POT file to a PO file named `wp-google-auth-{locale}.po`, for example
 
 ```
-cp wp_google_auth.pot wp_google_auth-en_US.po
+cp wp-google-auth.pot wp-google-auth-en_US.po
 ```
 
 ## Licence

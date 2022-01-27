@@ -9,15 +9,15 @@
         "start": "trap 'npm run stop' INT; npm run start:env",
         "stop": "npm run stop:env",
         "build:lang:mo": "( cd languages && rm -f *.mo && find . -name '*.po' -print -exec sh -c 'msgfmt -o $(basename {} .po).mo {}' \\; )",
-        "build:lang:json": "rm -f languages/wp_google_auth-*-*.json && vendor/bin/wp i18n make-json languages/ --no-purge",
+        "build:lang:json": "rm -f languages/wp-google-auth-*-*.json && vendor/bin/wp i18n make-json languages/ --no-purge",
         "build:lang": "npm run build:lang:mo & npm run build:lang:json & wait",
         "build": "npm run build:lang",
         "lint:php": "vendor/bin/phpcs --ignore=vendor/,node_modules/,build/ --extensions=php --standard=Wordpress .",
         "lint": "npm run lint:php",
         "format:php": "vendor/bin/phpcbf --ignore=vendor/,node_modules/,build/ --extensions=php --standard=Wordpress .",
         "format": "npm run format:php",
-        "lang:pot": "vendor/bin/wp i18n make-pot . languages/wp_google_auth.pot",
-        "lang:po": "( cd languages && find . -name '*.po' -print -exec msgmerge -U --backup=none {} wp_google_auth.pot \\; )",
+        "lang:pot": "vendor/bin/wp i18n make-pot . languages/wp-google-auth.pot",
+        "lang:po": "( cd languages && find . -name '*.po' -print -exec msgmerge -U --backup=none {} wp-google-auth.pot \\; )",
         "lang": "npm run lang:pot && npm run lang:po"
     },
     "devDependencies": {

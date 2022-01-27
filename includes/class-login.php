@@ -306,25 +306,25 @@ class Login {
 			// phpcs:disable WordPress.Security.EscapeOutput.UnsafePrintingFunction
 			switch ( $action ) {
 				case 'missing_params':
-					$message = __( '<strong>Error</strong>: Malformatted response to OpenID authentication request. Please try logging in again later.', 'wp_google_auth' );
+					$message = __( '<strong>Error</strong>: Malformatted response to OpenID authentication request. Please try logging in again later.', 'wp-google-auth' );
 					break;
 				case 'state_mismatch':
-					$message = __( '<strong>Error</strong>: Anti-forgery state token mismatch. Please try logging in again.', 'wp_google_auth' );
+					$message = __( '<strong>Error</strong>: Anti-forgery state token mismatch. Please try logging in again.', 'wp-google-auth' );
 					break;
 				case 'discovery_doc':
-					$message = __( '<strong>Error</strong>: There was an error reading the Google API discovery document. Please try logging in again later.', 'wp_google_auth' );
+					$message = __( '<strong>Error</strong>: There was an error reading the Google API discovery document. Please try logging in again later.', 'wp-google-auth' );
 					break;
 				case 'token':
-					$message = __( '<strong>Error</strong>: There was an error recieving the Google OAuth access token. Please try logging in again later.', 'wp_google_auth' );
+					$message = __( '<strong>Error</strong>: There was an error recieving the Google OAuth access token. Please try logging in again later.', 'wp-google-auth' );
 					break;
 				case 'user_info':
-					$message = __( '<strong>Error</strong>: There was an error fetching user info from Google. Please try logging in again later.', 'wp_google_auth' );
+					$message = __( '<strong>Error</strong>: There was an error fetching user info from Google. Please try logging in again later.', 'wp-google-auth' );
 					break;
 				case 'access_denied':
-					$message = __( '<strong>Error</strong>: Sorry, your account cannot login to this site.', 'wp_google_auth' );
+					$message = __( '<strong>Error</strong>: Sorry, your account cannot login to this site.', 'wp-google-auth' );
 					break;
 				default:
-					$message = __( '<strong>Error</strong>: OpenID login error. Please try logging in again later.', 'wp_google_auth' );
+					$message = __( '<strong>Error</strong>: OpenID login error. Please try logging in again later.', 'wp-google-auth' );
 			}
 			// phpcs:enable
 			$error->add( 'wp_google_auth_' . $action, $message );
@@ -333,7 +333,7 @@ class Login {
 				'wp_google_auth_noopenid_notice',
 				sprintf(
 					// translators: %s: Anchor attributes.
-					__( 'Since the Google OpenID login failed, you were taken to the default WordPress login page. If you want to attempt another sign in with Google, click <a %s>here</a>.', 'wp_google_auth' ),
+					__( 'Since the Google OpenID login failed, you were taken to the default WordPress login page. If you want to attempt another sign in with Google, click <a %s>here</a>.', 'wp-google-auth' ),
 					'href="' . wp_login_url() . '"'
 				),
 				'message'

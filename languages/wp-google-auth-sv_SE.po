@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: WP-CLI 2.5.0\n"
-"X-Domain: wp_google_auth\n"
+"X-Domain: wp-google-auth\n"
 
 #. Plugin Name of the plugin
 msgid "WP Google Auth"

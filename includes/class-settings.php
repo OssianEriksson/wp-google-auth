@@ -78,15 +78,15 @@ class Settings {
 
 		add_settings_section(
 			'wp_google_auth_settings_section_credentials',
-			__( 'OAuth2 Credentials', 'wp_google_auth' ),
+			__( 'OAuth2 Credentials', 'wp-google-auth' ),
 			function(): void {
 				?>
-				<p><?php esc_html_e( 'Enter Google OAuth2 credentials aquired from Google Workspace.', 'wp_google_auth' ); ?><p>
+				<p><?php esc_html_e( 'Enter Google OAuth2 credentials aquired from Google Workspace.', 'wp-google-auth' ); ?><p>
 				<p>
 					<?php
 					printf(
 						// translators: %1$s: Anchor attributes. %2$s: URI.
-						wp_kses_post( __( 'To get your Google API client, <a %1$s>follow these instructions</a>. Make sure to enter %2$s as an allowed redirect URI.', 'wp_google_auth' ) ),
+						wp_kses_post( __( 'To get your Google API client, <a %1$s>follow these instructions</a>. Make sure to enter %2$s as an allowed redirect URI.', 'wp-google-auth' ) ),
 						'href="https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid" target="_blank" rel="noopener noreferrer"',
 						'<code>' . esc_html( OAuth::get_redirect_uri() ) . '</code>'
 					)
@@ -99,7 +99,7 @@ class Settings {
 
 		add_settings_field(
 			'wp_google_auth_settings_field_client_id',
-			__( 'Client ID', 'wp_google_auth' ),
+			__( 'Client ID', 'wp-google-auth' ),
 			function(): void {
 				$setting     = 'client_id';
 				$placeholder = '000000000000-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com';
@@ -114,7 +114,7 @@ class Settings {
 
 		add_settings_field(
 			'wp_google_auth_settings_field_client_secret',
-			__( 'Client secret', 'wp_google_auth' ),
+			__( 'Client secret', 'wp-google-auth' ),
 			function(): void {
 				$setting     = 'client_secret';
 				$placeholder = 'XXXXXX-XXXXXXXXXXXXXX-XXXXXXXXXXXXX';
@@ -129,10 +129,10 @@ class Settings {
 
 		add_settings_section(
 			'wp_google_auth_settings_section_rules',
-			__( 'Login Rules', 'wp_google_auth' ),
+			__( 'Login Rules', 'wp-google-auth' ),
 			function(): void {
 				?>
-				<p><?php esc_html_e( 'Decide which Google Workspace accounts can log in to this WordPress site.', 'wp_google_auth' ); ?><p>
+				<p><?php esc_html_e( 'Decide which Google Workspace accounts can log in to this WordPress site.', 'wp-google-auth' ); ?><p>
 				<?php
 			},
 			'wp_google_auth_option_group'
@@ -140,7 +140,7 @@ class Settings {
 
 		add_settings_field(
 			'wp_google_auth_settings_field_email_regex',
-			__( 'Email whitelist regex', 'wp_google_auth' ),
+			__( 'Email whitelist regex', 'wp-google-auth' ),
 			function(): void {
 				$setting     = 'email_regex';
 				$placeholder = '(accounting|hr)\.\w+@mydomain\.com';
@@ -155,14 +155,14 @@ class Settings {
 
 		add_settings_section(
 			'wp_google_auth_settings_section_misc',
-			__( 'Miscellaneous', 'wp_google_auth' ),
+			__( 'Miscellaneous', 'wp-google-auth' ),
 			function(): void { },
 			'wp_google_auth_option_group'
 		);
 
 		add_settings_field(
 			'wp_google_auth_settings_field_cache_refresh',
-			__( 'Cache refresh interval', 'wp_google_auth' ),
+			__( 'Cache refresh interval', 'wp-google-auth' ),
 			function(): void {
 				$setting = 'cache_refresh';
 				$value   = $this->get( $setting );
@@ -190,7 +190,7 @@ class Settings {
 			add_settings_error(
 				'wp_google_auth_option',
 				'wp_google_auth_discovery_doc',
-				__( 'There was an error reading the Google API discovery document, please try again later.', 'wp_google_auth' ),
+				__( 'There was an error reading the Google API discovery document, please try again later.', 'wp-google-auth' ),
 				'error'
 			);
 			$option['error'] = true;
@@ -205,7 +205,7 @@ class Settings {
 					'wp_google_auth_client_id',
 					sprintf(
 						// translators: %s: Anchor attributes.
-						__( 'An OpenID error was detected, click <a %s>here</a> to view the problematic response from Google.', 'wp_google_auth' ),
+						__( 'An OpenID error was detected, click <a %s>here</a> to view the problematic response from Google.', 'wp-google-auth' ),
 						'href="' . esc_attr( $auth_url ) . '" target="_blank" rel="noopener noreferrer"'
 					),
 					'error'
@@ -218,7 +218,7 @@ class Settings {
 			add_settings_error(
 				'wp_google_auth_option',
 				'wp_google_auth_client_secret',
-				__( 'Client secret cannot be empty.', 'wp_google_auth' ),
+				__( 'Client secret cannot be empty.', 'wp-google-auth' ),
 				'error'
 			);
 			$option['error'] = true;
@@ -230,7 +230,7 @@ class Settings {
 			add_settings_error(
 				'wp_google_auth_option',
 				'wp_google_auth_cache_refresh',
-				__( 'Cache refresh interval was changed to a non-negative integer.', 'wp_google_auth' ),
+				__( 'Cache refresh interval was changed to a non-negative integer.', 'wp-google-auth' ),
 				'updated'
 			);
 		}
@@ -239,7 +239,7 @@ class Settings {
 			add_settings_error(
 				'wp_google_auth_option',
 				'wp_google_auth_success',
-				__( 'Settings saved. Please test out the login functionality to verify that everything is working as expected.', 'wp_google_auth' ),
+				__( 'Settings saved. Please test out the login functionality to verify that everything is working as expected.', 'wp-google-auth' ),
 				'success'
 			);
 		}
@@ -252,14 +252,14 @@ class Settings {
 	 */
 	public function add_settings_page(): void {
 		$options_page = add_options_page(
-			__( 'Google Auth', 'wp_google_auth' ),
-			__( 'Google Auth', 'wp_google_auth' ),
+			__( 'Google Auth', 'wp-google-auth' ),
+			__( 'Google Auth', 'wp-google-auth' ),
 			'manage_options',
-			'wp_google_auth',
+			'wp_google_auth_settings',
 			function(): void {
 				?>
 				<div class="wrap">
-					<h1><?php esc_html_e( 'Google Authentication Settings', 'wp_google_auth' ); ?></h1>
+					<h1><?php esc_html_e( 'Google Authentication Settings', 'wp-google-auth' ); ?></h1>
 					<form method="post" autocomplete="off" action="options.php">
 						<?php
 						settings_fields( 'wp_google_auth_option_group' );
@@ -283,11 +283,11 @@ class Settings {
 
 		$screen->add_help_tab(
 			array(
-				'title'    => __( 'Overview', 'wp_google_auth' ),
+				'title'    => __( 'Overview', 'wp-google-auth' ),
 				'id'       => 'wp_google_auth_help_tab_overview',
 				'callback' => function(): void {
 					?>
-					<p><?php esc_html_e( 'The fields on this screen determine the setup of the Google Workspace integration for authenticating users.', 'wp_google_auth' ); ?></p>
+					<p><?php esc_html_e( 'The fields on this screen determine the setup of the Google Workspace integration for authenticating users.', 'wp-google-auth' ); ?></p>
 					<?php
 				},
 			)
@@ -306,12 +306,12 @@ class Settings {
 		$url = esc_url(
 			add_query_arg(
 				'page',
-				'wp_google_auth',
+				'wp_google_auth_settings',
 				get_admin_url() . 'admin.php'
 			)
 		);
 
-		$links[] = '<a href="' . $url . '">' . __( 'Settings', 'wp_google_auth' ) . '</a>';
+		$links[] = '<a href="' . $url . '">' . __( 'Settings', 'wp-google-auth' ) . '</a>';
 		return $links;
 	}
 
