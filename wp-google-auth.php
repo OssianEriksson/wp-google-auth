@@ -40,21 +40,21 @@ chdir( __DIR__ );
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+add_action(
+	'init',
+	function() {
+		load_plugin_textdomain(
+			'wp_google_auth',
+			false,
+			dirname( plugin_basename( __FILE__ ) ) . '/languages'
+		);
+	}
+);
+
 $settings = new Settings();
 if ( $settings->get( 'error' ) === false ) {
 	$user  = new User();
 	$login = new Login( $settings, $user );
-
-	add_action(
-		'init',
-		function() {
-			load_plugin_textdomain(
-				'wp_google_auth',
-				false,
-				dirname( plugin_basename( __FILE__ ) ) . '/languages'
-			);
-		}
-	);
 }
 
 /**
