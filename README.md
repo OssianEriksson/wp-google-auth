@@ -30,8 +30,14 @@ The instructions here will help you set up a local development environemnt.
     The development server should now be started at <http://localhost:8888/>.
 
 1. When you are done, stop the development environment with
+
     ```console
     npm run stop
+    ```
+
+1. Before commtting, please build localization files and javascript:
+    ```console
+    npm run build
     ```
 
 ### Coding Standards
@@ -53,24 +59,28 @@ Localization files are stored in the [`languages`](./languages) folder:
 cd languages
 ```
 
+### Update localizations for existing locales
+
+Do
+
+```console
+npm run lang
+```
+
+Then fill out the empty fields in the updated PO files.
+
+### Localize for a new locale
+
 Generate a [POT file](https://developer.wordpress.org/plugins/internationalization/localization/#localization-files) by running
 
 ```console
-npm run pot
+npm run lang:pot
 ```
 
-To create a new translation, copy the generated POT file to a PO file named `wp_google_auth-{locale}.po`, for example
+Next, copy the generated POT file to a PO file named `wp_google_auth-{locale}.po`, for example
 
 ```
 cp wp_google_auth.pot wp_google_auth-en_US.po
-```
-
-If you are using [POEdit](https://poedit.net/) to edit PO files, you can use the [POT file to update existing PO files](https://stackoverflow.com/a/32316538).
-
-Edit the PO files to your desire and then compile them into MO files with
-
-```console
-npm run mo
 ```
 
 ## Licence
