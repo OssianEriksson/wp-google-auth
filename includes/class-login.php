@@ -185,13 +185,21 @@ class Login {
 			return;
 		}
 
-		$regex = '/^' . $this->settings->get( 'email_regex' ) . '$/';
-		if ( ! preg_match( $regex, $user_info['email'] ) ) {
+		$matches_any = false;
+		$roles       = array();
+		foreach ( $this->settings->get( 'email_patterns' ) as $email_pattern ) {
+			$regex = '/^' . $email_pattern['regex'] . '$/';
+			if ( preg_match( $regex, $user_info['email'] ) ) {
+				$matches_any = true;
+				$roles       = array_unique( array_merge( $roles, $email_pattern['roles'] ) );
+			}
+		}
+		if ( ! $matches_any ) {
 			$this->redirect_to_login_with_error( 'access_denied' );
 			return;
 		}
 
-		$user = $this->update_or_create_user( $user_info );
+		$user = $this->update_or_create_user( $user_info, $roles );
 		if ( ! $user ) {
 			$this->redirect_to_login_with_error( 'empty_user' );
 			return;
@@ -221,8 +229,9 @@ class Login {
 	 * Creates or updates a user
 	 *
 	 * @param array $user_info User info from Google's userinfo endpoint.
+	 * @param array $roles     Roles to apply to the user.
 	 */
-	private function update_or_create_user( array $user_info ): ?\WP_User {
+	private function update_or_create_user( array $user_info, array $roles ): ?\WP_User {
 		if ( ! isset( $user_info['email'] ) ) {
 			return false;
 		}
@@ -269,6 +278,15 @@ class Login {
 			$meta['is_google_user'] = true;
 		}
 		$this->user->update_meta_fields( $user->ID, $meta );
+
+		$roles_to_remove = array_diff( $user->roles, $roles );
+		foreach ( $roles_to_remove as $role ) {
+			$user->remove_role( $role );
+		}
+		$roles_to_add = array_diff( $roles, $user->roles );
+		foreach ( $roles_to_add as $role ) {
+			$user->add_role( $role );
+		}
 
 		return $user;
 	}

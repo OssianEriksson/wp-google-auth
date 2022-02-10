@@ -33,23 +33,23 @@
 namespace Ftek\WPGoogleAuth;
 
 if ( ! defined( 'WPINC' ) ) {
-	die;
+	exit;
 }
-
-chdir( __DIR__ );
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-add_action(
-	'init',
-	function() {
-		load_plugin_textdomain(
-			'wp-google-auth',
-			false,
-			dirname( plugin_basename( __FILE__ ) ) . '/languages'
-		);
-	}
-);
+define( __NAMESPACE__ . '\PLUGIN_FILE', __FILE__ );
+define( __NAMESPACE__ . '\PLUGIN_ROOT', dirname( PLUGIN_FILE ) );
+
+/**
+ * Loads the plugin's translated strings
+ */
+function load_translations() {
+	$plugin_rel_path = plugin_basename( PLUGIN_ROOT ) . '/languages';
+	load_plugin_textdomain( 'wp-google-auth', false, $plugin_rel_path );
+}
+
+add_action( 'init', __NAMESPACE__ . '\load_translations' );
 
 $settings = new Settings();
 if ( $settings->get( 'error' ) === false ) {

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Google Auth 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-google-auth\n"
-"POT-Creation-Date: 2022-01-27T14:47:38+00:00\n"
+"POT-Creation-Date: 2022-02-10T00:52:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ossian Eriksson\n"
 "Language-Team: Svenska\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "https://github.com/OssianEriksson"
 msgstr ""
 
-#: includes/class-login.php:309
+#: includes/class-login.php:327
 msgid ""
 "<strong>Error</strong>: Malformatted response to OpenID authentication "
 "request. Please try logging in again later."
@@ -42,7 +42,7 @@ msgstr ""
 "<strong>Fel</strong>: Felformatterat svar på OpenID-autentiseringsfrågan. "
 "Var god försök igen senare."
 
-#: includes/class-login.php:312
+#: includes/class-login.php:330
 msgid ""
 "<strong>Error</strong>: Anti-forgery state token mismatch. Please try "
 "logging in again."
@@ -50,7 +50,7 @@ msgstr ""
 "<strong>Fel</strong>: Anti-förfalskningsnyckeln matchade inte. Var god "
 "försök igen senare."
 
-#: includes/class-login.php:315
+#: includes/class-login.php:333
 msgid ""
 "<strong>Error</strong>: There was an error reading the Google API discovery "
 "document. Please try logging in again later."
@@ -58,7 +58,7 @@ msgstr ""
 "<strong>Fel</strong>: Ett problem uppstod vid inläsningen av Google-API:ts "
 "katalog. Var god försök igen senare."
 
-#: includes/class-login.php:318
+#: includes/class-login.php:336
 msgid ""
 "<strong>Error</strong>: There was an error recieving the Google OAuth access "
 "token. Please try logging in again later."
@@ -66,7 +66,7 @@ msgstr ""
 "<strong>Fel</strong>: Ett fel uppstod vid mottagandet av en OAuth-"
 "accessnyckel från Google. Var god försök igen senare."
 
-#: includes/class-login.php:321
+#: includes/class-login.php:339
 msgid ""
 "<strong>Error</strong>: There was an error fetching user info from Google. "
 "Please try logging in again later."
@@ -74,13 +74,13 @@ msgstr ""
 "<strong>Fel</strong>: Ett fel uppstod vid hämtingen av användarinformation "
 "från Google. Var god försök igen senare."
 
-#: includes/class-login.php:324
+#: includes/class-login.php:342
 msgid "<strong>Error</strong>: Sorry, your account cannot login to this site."
 msgstr ""
 "<strong>Fel</strong>: Tyvärr, ditt användarkonto kan inte logga in på denna "
 "sida. "
 
-#: includes/class-login.php:327
+#: includes/class-login.php:345
 msgid ""
 "<strong>Error</strong>: OpenID login error. Please try logging in again "
 "later."
@@ -88,7 +88,7 @@ msgstr ""
 "<strong>Fel</strong>: Inloggningsfel med OpenID. Var god försök igen senare."
 
 #. translators: %s: Anchor attributes.
-#: includes/class-login.php:336
+#: includes/class-login.php:354
 msgid ""
 "Since the Google OpenID login failed, you were taken to the default "
 "WordPress login page. If you want to attempt another sign in with Google, "
@@ -98,55 +98,12 @@ msgstr ""
 "inloggningssidan för WordPress. Om du vill försöka logga in med Google igen, "
 "klicka <a %s>här</a>."
 
-#: includes/class-settings.php:81
-msgid "OAuth2 Credentials"
-msgstr "OAuth2-uppgifter"
+#: includes/class-settings.php:128
+#, fuzzy
+msgid "Client ID cannot be empty."
+msgstr "Klienthemligheten kan inte lämnas tom."
 
-#: includes/class-settings.php:84
-msgid "Enter Google OAuth2 credentials aquired from Google Workspace."
-msgstr "Skriv in Google OAuth2-uppgifter hämtade från Google Workspace."
-
-#. translators: %1$s: Anchor attributes. %2$s: URI.
-#: includes/class-settings.php:89
-msgid ""
-"To get your Google API client, <a %1$s>follow these instructions</a>. Make "
-"sure to enter %2$s as an allowed redirect URI."
-msgstr ""
-"För att skapa din Google-API-klient, <a %1$s>följ dessa instruktioner</a>. "
-"Se till att ange %2$s som en tillåten omdirigerings-URL."
-
-#: includes/class-settings.php:102
-msgid "Client ID"
-msgstr "Klient-ID"
-
-#: includes/class-settings.php:117
-msgid "Client secret"
-msgstr "Klienthemlighet"
-
-#: includes/class-settings.php:132
-msgid "Login Rules"
-msgstr "Inloggningsregler"
-
-#: includes/class-settings.php:135
-msgid ""
-"Decide which Google Workspace accounts can log in to this WordPress site."
-msgstr ""
-"Bestäm vilka Google-Workspace-konton som kan logga in på denna WordPress-"
-"sida."
-
-#: includes/class-settings.php:143
-msgid "Email whitelist regex"
-msgstr "Regex för vitlistade mejladresser"
-
-#: includes/class-settings.php:158
-msgid "Miscellaneous"
-msgstr "Övrigt"
-
-#: includes/class-settings.php:165
-msgid "Cache refresh interval"
-msgstr "Cacheuppdateringsintervall"
-
-#: includes/class-settings.php:193
+#: includes/class-settings.php:133
 msgid ""
 "There was an error reading the Google API discovery document, please try "
 "again later."
@@ -154,52 +111,96 @@ msgstr ""
 "Ett problem uppstod vid inläsningen av Google-API:ts katalog. Var god försök "
 "igen senare."
 
-#. translators: %s: Anchor attributes.
-#: includes/class-settings.php:208
-msgid ""
-"An OpenID error was detected, click <a %s>here</a> to view the problematic "
-"response from Google."
-msgstr ""
-"Ett OpenID-fel uppstod, klicka <a %s>här</a> för att visa det problematiska "
-"svaret från Google."
+#. translators: %1$s: URL.
+#: includes/class-settings.php:142
+msgid "An OpenID error was detected: %1$s"
+msgstr "Ett OpenID-fel upptäcktes: %1$s"
 
-#: includes/class-settings.php:221
+#: includes/class-settings.php:150
 msgid "Client secret cannot be empty."
 msgstr "Klienthemligheten kan inte lämnas tom."
 
-#: includes/class-settings.php:233
-msgid "Cache refresh interval was changed to a non-negative integer."
-msgstr ""
-"Cacheuppdateringsintervallet uppdaterades till ett icke-negativt heltal."
-
-#: includes/class-settings.php:242
-msgid ""
-"Settings saved. Please test out the login functionality to verify that "
-"everything is working as expected."
-msgstr ""
-"Ändrigarna sparade. Var god att prova inloggningsfuntionaliteten för att "
-"säkerställa att allting fungerar som förväntat."
-
-#: includes/class-settings.php:255 includes/class-settings.php:256
+#: includes/class-settings.php:179 includes/class-settings.php:180
 msgid "Google Auth"
 msgstr "Googleautentisering"
 
-#: includes/class-settings.php:262
-msgid "Google Authentication Settings"
-msgstr "Inställningar för googleautentisering"
+#: includes/class-settings.php:244 build/settings.tsx.js:1
+msgid "OAuth Client"
+msgstr "OAuth-klient"
 
-#: includes/class-settings.php:286
-msgid "Overview"
-msgstr "Översikt"
-
-#: includes/class-settings.php:290
+#. translators: %1$s: Anchor attributes.
+#: includes/class-settings.php:252
 msgid ""
-"The fields on this screen determine the setup of the Google Workspace "
-"integration for authenticating users."
+"To perform logins with Google, this plugin needs access to a Google OAuth "
+"client id and secret. To create a Google OAuth client as a Google Workspace "
+"admin you can follow the instrcutions <a %1$s>here</a>."
 msgstr ""
-"Fälten på denna sida kontrollerar Google Workspace-integrationen för "
-"autentisering av användare."
+"För att kunna logga in användare med Google behöver detta plugin tillgång "
+"till ett Google OAuth klient-id och en klienthemlighet. För att skapa en "
+"Google OAuth-klient som en Google Workspace-administratör, följ "
+"instruktionerna <a %1$s>här</a>."
 
-#: includes/class-settings.php:314
+#: includes/class-settings.php:278
 msgid "Settings"
 msgstr "Inställningar"
+
+#: build/settings.tsx.js:1
+msgid "The following error has occurred:"
+msgstr "Följande fel har inträffat:"
+
+#: build/settings.tsx.js:1
+msgid "Email regex pattern"
+msgstr "Regex-mönster för e-mejl"
+
+#: build/settings.tsx.js:1
+msgid "Select roles"
+msgstr "Välj roller"
+
+#: build/settings.tsx.js:1
+msgid "Google OAuth client ID"
+msgstr "Google OAturh klient-ID"
+
+#: build/settings.tsx.js:1
+msgid "Google OAuth client secret"
+msgstr "Google OAuth klienthemlighet"
+
+#: build/settings.tsx.js:1
+msgid "Account Settings"
+msgstr "Inställningar för användarkonton"
+
+#: build/settings.tsx.js:1
+msgid ""
+"Here you can enter regex pattern to be matched against user emails. For "
+"every match, you can select which roles should be applied to the user."
+msgstr ""
+"Här kan du fylla i regex-mönster som kommer matchas mot användares e-mejl"
+"addresser. För varje matchning kan du välja vilka roller som ska tilldelas "
+"till motsvarande matchning."
+
+#: build/settings.tsx.js:1
+msgid "Add pattern"
+msgstr "Lägg till mönster"
+
+#: build/settings.tsx.js:1
+msgid "Miscellaneous Settings"
+msgstr "Övriga inställningar"
+
+#: build/settings.tsx.js:1
+msgid "Cache refresh interval (hours)"
+msgstr "Cacheuppdateringsintervall (timmar)"
+
+#: build/settings.tsx.js:1
+msgid ""
+"Settings saved! Please test out the login functionality to verify that "
+"everything is working as expected."
+msgstr ""
+"Ändrigarna sparade! Var god att prova inloggningsfuntionaliteten för att "
+"säkerställa att allting fungerar som förväntat."
+
+#: build/settings.tsx.js:1
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+#: build/settings.tsx.js:1
+msgid "WP Google Auth Settings"
+msgstr "Inställningar för WP Googleautentisering"
