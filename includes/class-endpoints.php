@@ -59,7 +59,7 @@ class Endpoints {
 	public function __construct( Settings $settings ) {
 		$this->settings = $settings;
 
-		$logger = new Logger( get_class() );
+		$this->logger = new Logger( get_class() );
 	}
 
 	/**
