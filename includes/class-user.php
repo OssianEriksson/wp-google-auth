@@ -162,7 +162,7 @@ class User {
 		<script type="text/javascript">
 			document.addEventListener("DOMContentLoaded", () => {
 				document.querySelectorAll("#your-profile").forEach(yourProfile => {
-					yourProfile.querySelectorAll("#first_name,#last_name,#email").forEach(input => {
+					yourProfile.querySelectorAll("#first_name,#last_name,#email,#role").forEach(input => {
 						input.setAttribute("disabled", true);
 					})
 				});
