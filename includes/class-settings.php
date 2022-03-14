@@ -28,7 +28,7 @@ namespace Ftek\WPGoogleAuth;
  */
 class Settings {
 
-	const DEFAULT_SETTING = array(
+	const DEFAULT_SETTINGS = array(
 		'client_id'      => '',
 		'client_secret'  => '',
 		'email_patterns' => array(),
@@ -53,7 +53,8 @@ class Settings {
 	 *                     setting array.
 	 */
 	public function get( ?string $key ) {
-		$option = array_merge( self::DEFAULT_SETTING, get_option( 'wp_google_auth_option' ) );
+		$option = get_option( 'wp_google_auth_option' );
+		$option = array_merge( self::DEFAULT_SETTINGS, $option ? $option : array() );
 		return null === $key ? $option : $option[ $key ];
 	}
 
@@ -108,7 +109,7 @@ class Settings {
 					),
 				),
 				'sanitize_callback' => array( $this, 'sanitize_settings' ),
-				'default'           => self::DEFAULT_SETTING,
+				'default'           => self::DEFAULT_SETTINGS,
 			)
 		);
 	}
@@ -203,29 +204,11 @@ class Settings {
 	 * Enqueues scripts and styles needed on the settings page
 	 */
 	public function enqueue_settings_page_scripts(): void {
-		$asset = require PLUGIN_ROOT . '/build/settings.tsx.asset.php';
-		wp_enqueue_style(
-			'wp-google-auth-settings',
-			plugins_url( '/build/settings.tsx.css', PLUGIN_FILE ),
-			array( 'wp-components' ),
-			$asset['version']
-		);
-		wp_enqueue_script(
-			'wp-google-auth-settings',
-			plugins_url( '/build/settings.tsx.js', PLUGIN_FILE ),
-			$asset['dependencies'],
-			$asset['version'],
-			true
-		);
-		wp_set_script_translations(
-			'wp-google-auth-settings',
-			'wp-google-auth',
-			PLUGIN_ROOT . '/languages'
-		);
+		enqueue_entrypoint_script( 'wp-google-auth-settings', 'settings.tsx' );
 
 		wp_add_inline_script(
 			'wp-google-auth-settings',
-			'const wp_google_auth = ' . wp_json_encode(
+			'const wpGoogleAuth = ' . wp_json_encode(
 				array(
 					'roles' => $this->get_available_roles(),
 				)

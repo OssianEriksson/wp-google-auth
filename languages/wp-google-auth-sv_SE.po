@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Google Auth 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-google-auth\n"
-"POT-Creation-Date: 2022-02-10T00:52:09+00:00\n"
+"POT-Creation-Date: 2022-03-14T13:48:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ossian Eriksson\n"
 "Language-Team: Svenska\n"
@@ -98,12 +98,12 @@ msgstr ""
 "inloggningssidan för WordPress. Om du vill försöka logga in med Google igen, "
 "klicka <a %s>här</a>."
 
-#: includes/class-settings.php:128
+#: includes/class-settings.php:129
 #, fuzzy
 msgid "Client ID cannot be empty."
 msgstr "Klienthemligheten kan inte lämnas tom."
 
-#: includes/class-settings.php:133
+#: includes/class-settings.php:134
 msgid ""
 "There was an error reading the Google API discovery document, please try "
 "again later."
@@ -112,24 +112,24 @@ msgstr ""
 "igen senare."
 
 #. translators: %1$s: URL.
-#: includes/class-settings.php:142
+#: includes/class-settings.php:143
 msgid "An OpenID error was detected: %1$s"
 msgstr "Ett OpenID-fel upptäcktes: %1$s"
 
-#: includes/class-settings.php:150
+#: includes/class-settings.php:151
 msgid "Client secret cannot be empty."
 msgstr "Klienthemligheten kan inte lämnas tom."
 
-#: includes/class-settings.php:179 includes/class-settings.php:180
+#: includes/class-settings.php:180 includes/class-settings.php:181
 msgid "Google Auth"
 msgstr "Googleautentisering"
 
-#: includes/class-settings.php:244 build/settings.tsx.js:1
+#: includes/class-settings.php:227 build/entrypoints/settings.tsx.js:1
 msgid "OAuth Client"
 msgstr "OAuth-klient"
 
 #. translators: %1$s: Anchor attributes.
-#: includes/class-settings.php:252
+#: includes/class-settings.php:235
 msgid ""
 "To perform logins with Google, this plugin needs access to a Google OAuth "
 "client id and secret. To create a Google OAuth client as a Google Workspace "
@@ -140,56 +140,56 @@ msgstr ""
 "Google OAuth-klient som en Google Workspace-administratör, följ "
 "instruktionerna <a %1$s>här</a>."
 
-#: includes/class-settings.php:278
+#: includes/class-settings.php:261
 msgid "Settings"
 msgstr "Inställningar"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "The following error has occurred:"
 msgstr "Följande fel har inträffat:"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Email regex pattern"
 msgstr "Regex-mönster för e-mejl"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Select roles"
 msgstr "Välj roller"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Google OAuth client ID"
 msgstr "Google OAturh klient-ID"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Google OAuth client secret"
 msgstr "Google OAuth klienthemlighet"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Account Settings"
 msgstr "Inställningar för användarkonton"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid ""
 "Here you can enter regex pattern to be matched against user emails. For "
 "every match, you can select which roles should be applied to the user."
 msgstr ""
-"Här kan du fylla i regex-mönster som kommer matchas mot användares e-mejl"
-"addresser. För varje matchning kan du välja vilka roller som ska tilldelas "
-"till motsvarande matchning."
+"Här kan du fylla i regex-mönster som kommer matchas mot användares e-"
+"mejladdresser. För varje matchning kan du välja vilka roller som ska "
+"tilldelas till motsvarande matchning."
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Add pattern"
 msgstr "Lägg till mönster"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Miscellaneous Settings"
 msgstr "Övriga inställningar"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Cache refresh interval (hours)"
 msgstr "Cacheuppdateringsintervall (timmar)"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid ""
 "Settings saved! Please test out the login functionality to verify that "
 "everything is working as expected."
@@ -197,10 +197,10 @@ msgstr ""
 "Ändrigarna sparade! Var god att prova inloggningsfuntionaliteten för att "
 "säkerställa att allting fungerar som förväntat."
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "Save changes"
 msgstr "Spara ändringar"
 
-#: build/settings.tsx.js:1
+#: build/entrypoints/settings.tsx.js:1
 msgid "WP Google Auth Settings"
 msgstr "Inställningar för WP Googleautentisering"
