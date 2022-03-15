@@ -100,4 +100,4 @@ function clean() {
 	Endpoints::clean();
 }
 
-register_uninstall_hook( __FILE__, 'clean' );
+register_uninstall_hook( __FILE__, __NAMESPACE__ . '\clean' );

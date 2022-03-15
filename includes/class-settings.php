@@ -52,7 +52,7 @@ class Settings {
 	 * @param ?string $key Key of requested setting or null for the entire
 	 *                     setting array.
 	 */
-	public function get( ?string $key ) {
+	public function get( ?string $key = null ) {
 		$option = get_option( 'wp_google_auth_option' );
 		$option = array_merge( self::DEFAULT_SETTINGS, $option ? $option : array() );
 		return null === $key ? $option : $option[ $key ];
