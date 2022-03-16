@@ -16,28 +16,32 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-.error {
-	color: #f00;
-}
+.wp-google-auth-settings {
+	width: 100%;
 
-.placeholder-center {
-	margin: auto;
-}
+	.error {
+		color: #f00;
+	}
 
-.email-pattern-row {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 1em;
-}
+	.placeholder-center {
+		margin: auto;
+	}
 
-.email-pattern-row-button {
-	display: flex;
-	align-items: flex-end;
-	padding-bottom: 0.4em;
-}
+	.email-pattern-row {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 1em;
+	}
 
-.email-pattern-row-center {
-	flex: 1;
-	margin-left: 1em;
-	margin-right: 1em;
+	.email-pattern-row-button {
+		display: flex;
+		align-items: flex-end;
+		padding-bottom: 0.4em;
+	}
+
+	.email-pattern-row-center {
+		flex: 1;
+		margin-left: 1em;
+		margin-right: 1em;
+	}
 }

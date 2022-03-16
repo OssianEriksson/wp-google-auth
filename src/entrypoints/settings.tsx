@@ -18,11 +18,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import { render } from '@wordpress/element';
 
-import SettingsPage from '../components/settings-page';
+import SettingsPage, { Role } from '../components/settings-page';
+
+declare const wpGoogleAuth: {
+	roles: Role[];
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-	const root = document.getElementById('wp_google_auth_settings');
+	const root = document.getElementById('wp-google-auth-settings');
 	if (root) {
-		render(<SettingsPage />, root);
+		render(<SettingsPage availableRoles={wpGoogleAuth.roles} />, root);
 	}
 });

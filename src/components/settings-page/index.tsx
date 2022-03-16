@@ -38,7 +38,7 @@ import structuredClone from '@ungap/structured-clone';
 import './index.scss';
 
 type RoleKey = string;
-type Role = {
+export type Role = {
 	key: RoleKey;
 	name: string;
 };
@@ -56,10 +56,6 @@ type Option = {
 
 type SettingsObject = {
 	wp_google_auth_option?: Option;
-};
-
-declare const wpGoogleAuth: {
-	roles: Role[];
 };
 
 const ErrorDisplay = (error: any): JSX.Element => (
@@ -89,10 +85,12 @@ const EmailPatternSelector = ({
 	pattern,
 	onDelete,
 	onPatternChange,
+	availableRoles,
 }: {
 	pattern: EmailPattern;
 	onDelete: () => void;
 	onPatternChange: (pattern: EmailPattern) => void;
+	availableRoles: Role[];
 }): JSX.Element => {
 	const toggleRole = (role: RoleKey, enable: boolean) => {
 		const index = pattern.roles.indexOf(role);
@@ -131,7 +129,7 @@ const EmailPatternSelector = ({
 					label={__('Select roles', 'wp-google-auth')}
 				>
 					{() =>
-						wpGoogleAuth.roles.map((role, i) => (
+						availableRoles.map((role, i) => (
 							<MenuItem key={`${i}`}>
 								<CheckboxControl
 									label={role.name}
@@ -149,7 +147,11 @@ const EmailPatternSelector = ({
 	);
 };
 
-const SettingsContent = (): JSX.Element => {
+const SettingsContent = ({
+	availableRoles,
+}: {
+	availableRoles: Role[];
+}): JSX.Element => {
 	const [error, setError] = useState<unknown>(null);
 	const [option, setOption] = useState<Option>(null);
 	useEffect(() => {
@@ -250,6 +252,7 @@ const SettingsContent = (): JSX.Element => {
 						newOption.email_patterns[i] = p;
 						setOption(newOption);
 					}}
+					availableRoles={availableRoles}
 				/>
 			))}
 			<Button
@@ -282,12 +285,16 @@ const SettingsContent = (): JSX.Element => {
 	);
 };
 
-const SettingsPage = (): JSX.Element => (
-	<>
+const SettingsPage = ({
+	availableRoles,
+}: {
+	availableRoles: Role[];
+}): JSX.Element => (
+	<div className="wp-google-auth-settings">
 		<h1>{__('WP Google Auth Settings', 'wp-google-auth')}</h1>
-		<SettingsContent />
+		<SettingsContent availableRoles={availableRoles} />
 		<NoticeBar />
-	</>
+	</div>
 );
 
 export default SettingsPage;

@@ -183,7 +183,7 @@ class Settings {
 			'wp_google_auth_settings',
 			function(): void {
 				?>
-				<div id="wp_google_auth_settings" class="wrap"></div>
+				<div id="wp-google-auth-settings" class="wrap"></div>
 				<?php
 			}
 		);
