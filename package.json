@@ -1,18 +1,15 @@
 {
-    "name": "wp-google-auth",
-    "author": "Ossian Eriksson",
-    "license": "GPL-3.0",
-    "private": true,
-    "scripts": {
-		"start": "concurrently 'wp-scripts start' 'wp-scripts start src/entrypoints/*.* --output-path build/entrypoints'",
-		"build": "npm run build:clean && concurrently npm:build:jed npm:build:mo npm:build:scripts",
-		"build:clean": "rm -Rf build languages/*.{json,mo}",
+	"private": true,
+	"scripts": {
+		"start": "wp-scripts start src/entrypoints/*.*",
+		"build": "npm run build:clean && npm run build:scripts && npm run i18n:pot && npm run i18n:po && concurrently npm:build:jed npm:build:mo",
+		"build:clean": "rm -Rf build languages/*.{json,mo,pot}",
 		"build:jed": "composer exec -- wp i18n make-json languages --no-purge",
 		"build:mo": "composer exec -- wp i18n make-mo languages",
-		"build:scripts": "wp-scripts build && wp-scripts build src/entrypoints/*.* --output-path build/entrypoints && rm -Rf build/entrypoints/blocks",
-		"i18n": "npm run i18n:po",
-		"i18n:pot": "npm run build:scripts && composer exec -- wp i18n make-pot .",
-		"i18n:po": "npm run i18n:pot && ( cd languages && find . -name '*.po' -print -exec msgmerge -U --backup=none {} *.pot \\; )",
+		"build:scripts": "wp-scripts build src/entrypoints/*.*",
+		"i18n": "npm run build:scripts && npm run i18n:pot && npm run i18n:po",
+		"i18n:pot": "composer exec -- wp i18n make-pot .",
+		"i18n:po": "cd languages && find . -name '*.po' -print -exec msgmerge -U --backup=none {} *.pot \\;",
 		"lint": "concurrently npm:lint:style npm:lint:js npm:lint:php",
 		"lint:style": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
@@ -20,20 +17,24 @@
 		"format": "concurrently npm:format:scripts npm:format:php",
 		"format:scripts": "wp-scripts format",
 		"format:php": "composer exec -- phpcbf --ignore=vendor,node_modules,build --extensions=php --standard=Wordpress ."
-    },
-    "prettier": "@wordpress/prettier-config",
-    "devDependencies": {
+	},
+	"devDependencies": {
+		"@types/prettier": "^2.4.4",
+		"@types/ungap__structured-clone": "^0.3.0",
+		"@types/webpack": "^5.28.0",
+		"@ungap/structured-clone": "^0.3.4",
+		"@wordpress/api-fetch": "^6.5.0",
+		"@wordpress/blocks": "^11.2.1",
+		"@wordpress/components": "^19.10.0",
+		"@wordpress/data": "^6.8.0",
 		"@wordpress/element": "^4.1.1",
 		"@wordpress/i18n": "^4.3.1",
+		"@wordpress/icons": "^8.4.0",
+		"@wordpress/notices": "^3.8.0",
 		"@wordpress/prettier-config": "^1.1.2",
 		"@wordpress/scripts": "^21.0.2",
-        "@wordpress/api-fetch": "^6.0.0",
-        "@wordpress/components": "^19.3.0",
-        "@wordpress/data": "^6.2.0",
-        "@wordpress/icons": "^6.2.0",
-        "@wordpress/notices": "^3.3.0",
 		"concurrently": "^7.0.0",
-        "@types/ungap__structured-clone": "^0.3.0",
-        "@ungap/structured-clone": "^0.3.4"
-    }
+		"typescript": "^4.6.3",
+		"typescript-plugin-css-modules": "^3.4.0"
+	}
 }

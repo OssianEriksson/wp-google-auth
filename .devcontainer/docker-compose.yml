@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  wordpress:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8888:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DEBUG: true
+    volumes:
+      - ..:/var/www/html/wp-content/plugins/ftek-google-auth
+
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:

@@ -1,0 +1,10 @@
+{
+	"name": "WordPress plugin",
+	"dockerComposeFile": "./docker-compose.yml",
+	"service": "wordpress",
+	"workspaceFolder": "/var/www/html/wp-content/plugins/ftek-google-auth",
+	"forwardPorts": [8888],
+	"extensions": ["esbenp.prettier-vscode", "wongjn.php-sniffer"],
+	"remoteUser": "wordpress",
+	"onCreateCommand": "sudo -Eu www-data setup-wordpress"
+}

@@ -1,2 +1,11 @@
+# Node dependencies
 node_modules/
+
+# Php dependencies
 vendor/
+
+# Build files
+build/
+
+# Release
+release.zip

@@ -1,10 +1,10 @@
 # Copyright (C) 2022 Ossian Eriksson
-# This file is distributed under the same license as the WP Google Auth plugin.
+# This file is distributed under the same license as the Ftek Google Auth plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Google Auth 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-google-auth\n"
-"POT-Creation-Date: 2022-03-14T13:48:29+00:00\n"
+"Project-Id-Version: Ftek Google Auth 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ftek-google-auth\n"
+"POT-Creation-Date: 2022-05-05T16:10:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ossian Eriksson\n"
 "Language-Team: Svenska\n"
@@ -13,18 +13,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: WP-CLI 2.5.0\n"
-"X-Domain: wp-google-auth\n"
+"X-Domain: ftek-google-auth\n"
 
 #. Plugin Name of the plugin
-msgid "WP Google Auth"
-msgstr "WP Googleautentisering"
+msgid "Template WordPress Plugin"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/fysikteknologsektionen/ftek-google-auth"
+msgstr ""
 
 #. Description of the plugin
-msgid ""
-"WordPress plugin for syncing WordPress users with Google Workspace users."
+msgid "GitHub template for a WordPress plugin"
 msgstr ""
-"WordPress-plugin för synkronisering av WordPress-användare med Google "
-"Workspace-användare."
 
 #. Author of the plugin
 msgid "Ossian Eriksson"
@@ -34,7 +35,7 @@ msgstr ""
 msgid "https://github.com/OssianEriksson"
 msgstr ""
 
-#: includes/class-login.php:327
+#: includes/class-login.php:311
 msgid ""
 "<strong>Error</strong>: Malformatted response to OpenID authentication "
 "request. Please try logging in again later."
@@ -42,7 +43,7 @@ msgstr ""
 "<strong>Fel</strong>: Felformatterat svar på OpenID-autentiseringsfrågan. "
 "Var god försök igen senare."
 
-#: includes/class-login.php:330
+#: includes/class-login.php:314
 msgid ""
 "<strong>Error</strong>: Anti-forgery state token mismatch. Please try "
 "logging in again."
@@ -50,7 +51,7 @@ msgstr ""
 "<strong>Fel</strong>: Anti-förfalskningsnyckeln matchade inte. Var god "
 "försök igen senare."
 
-#: includes/class-login.php:333
+#: includes/class-login.php:317
 msgid ""
 "<strong>Error</strong>: There was an error reading the Google API discovery "
 "document. Please try logging in again later."
@@ -58,7 +59,7 @@ msgstr ""
 "<strong>Fel</strong>: Ett problem uppstod vid inläsningen av Google-API:ts "
 "katalog. Var god försök igen senare."
 
-#: includes/class-login.php:336
+#: includes/class-login.php:320
 msgid ""
 "<strong>Error</strong>: There was an error recieving the Google OAuth access "
 "token. Please try logging in again later."
@@ -66,7 +67,7 @@ msgstr ""
 "<strong>Fel</strong>: Ett fel uppstod vid mottagandet av en OAuth-"
 "accessnyckel från Google. Var god försök igen senare."
 
-#: includes/class-login.php:339
+#: includes/class-login.php:323
 msgid ""
 "<strong>Error</strong>: There was an error fetching user info from Google. "
 "Please try logging in again later."
@@ -74,13 +75,13 @@ msgstr ""
 "<strong>Fel</strong>: Ett fel uppstod vid hämtingen av användarinformation "
 "från Google. Var god försök igen senare."
 
-#: includes/class-login.php:342
+#: includes/class-login.php:326
 msgid "<strong>Error</strong>: Sorry, your account cannot login to this site."
 msgstr ""
 "<strong>Fel</strong>: Tyvärr, ditt användarkonto kan inte logga in på denna "
 "sida. "
 
-#: includes/class-login.php:345
+#: includes/class-login.php:329
 msgid ""
 "<strong>Error</strong>: OpenID login error. Please try logging in again "
 "later."
@@ -88,7 +89,7 @@ msgstr ""
 "<strong>Fel</strong>: Inloggningsfel med OpenID. Var god försök igen senare."
 
 #. translators: %s: Anchor attributes.
-#: includes/class-login.php:354
+#: includes/class-login.php:338
 msgid ""
 "Since the Google OpenID login failed, you were taken to the default "
 "WordPress login page. If you want to attempt another sign in with Google, "
@@ -98,12 +99,12 @@ msgstr ""
 "inloggningssidan för WordPress. Om du vill försöka logga in med Google igen, "
 "klicka <a %s>här</a>."
 
-#: includes/class-settings.php:129
+#: includes/class-settings.php:113
 #, fuzzy
 msgid "Client ID cannot be empty."
 msgstr "Klienthemligheten kan inte lämnas tom."
 
-#: includes/class-settings.php:134
+#: includes/class-settings.php:118
 msgid ""
 "There was an error reading the Google API discovery document, please try "
 "again later."
@@ -112,24 +113,24 @@ msgstr ""
 "igen senare."
 
 #. translators: %1$s: URL.
-#: includes/class-settings.php:143
+#: includes/class-settings.php:127
 msgid "An OpenID error was detected: %1$s"
 msgstr "Ett OpenID-fel upptäcktes: %1$s"
 
-#: includes/class-settings.php:151
+#: includes/class-settings.php:135
 msgid "Client secret cannot be empty."
 msgstr "Klienthemligheten kan inte lämnas tom."
 
-#: includes/class-settings.php:180 includes/class-settings.php:181
+#: includes/class-settings.php:164 includes/class-settings.php:165
 msgid "Google Auth"
 msgstr "Googleautentisering"
 
-#: includes/class-settings.php:227 build/entrypoints/settings.tsx.js:1
+#: includes/class-settings.php:211 build/settings.tsx.js:1
 msgid "OAuth Client"
 msgstr "OAuth-klient"
 
 #. translators: %1$s: Anchor attributes.
-#: includes/class-settings.php:235
+#: includes/class-settings.php:219
 msgid ""
 "To perform logins with Google, this plugin needs access to a Google OAuth "
 "client id and secret. To create a Google OAuth client as a Google Workspace "
@@ -140,35 +141,35 @@ msgstr ""
 "Google OAuth-klient som en Google Workspace-administratör, följ "
 "instruktionerna <a %1$s>här</a>."
 
-#: includes/class-settings.php:261
+#: includes/class-settings.php:245
 msgid "Settings"
 msgstr "Inställningar"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "The following error has occurred:"
 msgstr "Följande fel har inträffat:"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Email regex pattern"
 msgstr "Regex-mönster för e-mejl"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Select roles"
 msgstr "Välj roller"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Google OAuth client ID"
 msgstr "Google OAturh klient-ID"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Google OAuth client secret"
 msgstr "Google OAuth klienthemlighet"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Account Settings"
 msgstr "Inställningar för användarkonton"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid ""
 "Here you can enter regex pattern to be matched against user emails. For "
 "every match, you can select which roles should be applied to the user."
@@ -177,19 +178,19 @@ msgstr ""
 "mejladdresser. För varje matchning kan du välja vilka roller som ska "
 "tilldelas till motsvarande matchning."
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Add pattern"
 msgstr "Lägg till mönster"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Miscellaneous Settings"
 msgstr "Övriga inställningar"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Cache refresh interval (hours)"
 msgstr "Cacheuppdateringsintervall (timmar)"
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid ""
 "Settings saved! Please test out the login functionality to verify that "
 "everything is working as expected."
@@ -197,10 +198,19 @@ msgstr ""
 "Ändrigarna sparade! Var god att prova inloggningsfuntionaliteten för att "
 "säkerställa att allting fungerar som förväntat."
 
-#: build/entrypoints/settings.tsx.js:1
+#: build/settings.tsx.js:1
 msgid "Save changes"
 msgstr "Spara ändringar"
 
-#: build/entrypoints/settings.tsx.js:1
-msgid "WP Google Auth Settings"
-msgstr "Inställningar för WP Googleautentisering"
+#: build/settings.tsx.js:1
+msgid "Ftek Google Auth Settings"
+msgstr "Inställningar för Ftek Googleautentisering"
+
+#~ msgid "Ftek Google Auth"
+#~ msgstr "Ftek Googleautentisering"
+
+#~ msgid ""
+#~ "WordPress plugin for syncing WordPress users with Google Workspace users."
+#~ msgstr ""
+#~ "WordPress-plugin för synkronisering av WordPress-användare med Google "
+#~ "Workspace-användare."

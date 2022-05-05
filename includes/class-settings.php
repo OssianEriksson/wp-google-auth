@@ -2,26 +2,10 @@
 /**
  * Handles plugin settings
  *
- * WP Google Auth
- * Copyright (C) 2021  Ossian Eriksson
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * @package ftek/wp-google-auth
+ * @package ftek/google-auth
  */
 
-namespace Ftek\WPGoogleAuth;
+namespace Ftek\GoogleAuth;
 
 /**
  * Handles plugin settings
@@ -43,7 +27,7 @@ class Settings {
 		add_action( 'init', array( $this, 'add_settings' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
-		add_filter( 'plugin_action_links_wp-google-auth/wp-google-auth.php', array( $this, 'add_settings_action_link' ) );
+		add_filter( 'plugin_action_links_ftek-google-auth/ftek-google-auth.php', array( $this, 'add_settings_action_link' ) );
 	}
 
 	/**
@@ -126,12 +110,12 @@ class Settings {
 		$errors = array();
 
 		if ( empty( $client_id ) ) {
-			$errors[] = __( 'Client ID cannot be empty.', 'wp-google-auth' );
+			$errors[] = __( 'Client ID cannot be empty.', 'ftek-google-auth' );
 		} else {
 			$oauth    = new OAuth( $this );
 			$auth_url = $oauth->get_authorization_url( $client_id );
 			if ( empty( $auth_url ) ) {
-				$errors[] = __( 'There was an error reading the Google API discovery document, please try again later.', 'wp-google-auth' );
+				$errors[] = __( 'There was an error reading the Google API discovery document, please try again later.', 'ftek-google-auth' );
 			} else {
 				$response = wp_remote_get( $auth_url );
 				$code     = wp_remote_retrieve_response_code( $response );
@@ -140,7 +124,7 @@ class Settings {
 				if ( 200 !== $code || strpos( $url_path, 'error' ) !== false ) {
 					$errors[] = sprintf(
 						// translators: %1$s: URL.
-						__( 'An OpenID error was detected: %1$s', 'wp-google-auth' ),
+						__( 'An OpenID error was detected: %1$s', 'ftek-google-auth' ),
 						$auth_url
 					);
 				}
@@ -148,7 +132,7 @@ class Settings {
 		}
 
 		if ( empty( $client_secret ) ) {
-			$errors[] = __( 'Client secret cannot be empty.', 'wp-google-auth' );
+			$errors[] = __( 'Client secret cannot be empty.', 'ftek-google-auth' );
 		}
 
 		return $errors;
@@ -177,13 +161,13 @@ class Settings {
 	 */
 	public function add_settings_page(): void {
 		$settings_page = add_options_page(
-			__( 'Google Auth', 'wp-google-auth' ),
-			__( 'Google Auth', 'wp-google-auth' ),
+			__( 'Google Auth', 'ftek-google-auth' ),
+			__( 'Google Auth', 'ftek-google-auth' ),
 			'manage_options',
 			'wp_google_auth_settings',
 			function(): void {
 				?>
-				<div id="wp-google-auth-settings" class="wrap"></div>
+				<div id="ftek-google-auth-settings" class="wrap"></div>
 				<?php
 			}
 		);
@@ -204,10 +188,10 @@ class Settings {
 	 * Enqueues scripts and styles needed on the settings page
 	 */
 	public function enqueue_settings_page_scripts(): void {
-		enqueue_entrypoint_script( 'wp-google-auth-settings', 'settings.tsx' );
+		enqueue_entrypoint_script( 'ftek-google-auth-settings', 'settings.tsx' );
 
 		wp_add_inline_script(
-			'wp-google-auth-settings',
+			'ftek-google-auth-settings',
 			'const wpGoogleAuth = ' . wp_json_encode(
 				array(
 					'roles' => $this->get_available_roles(),
@@ -224,7 +208,7 @@ class Settings {
 		$screen = get_current_screen();
 		$screen->add_help_tab(
 			array(
-				'title'    => __( 'OAuth Client', 'wp-google-auth' ),
+				'title'    => __( 'OAuth Client', 'ftek-google-auth' ),
 				'id'       => 'wp_google_auth_help_tab_overview',
 				'callback' => function(): void {
 					?>
@@ -232,7 +216,7 @@ class Settings {
 						<?php
 						sprintf(
 							// translators: %1$s: Anchor attributes.
-							__( 'To perform logins with Google, this plugin needs access to a Google OAuth client id and secret. To create a Google OAuth client as a Google Workspace admin you can follow the instrcutions <a %1$s>here</a>.', 'wp-google-auth' ),
+							__( 'To perform logins with Google, this plugin needs access to a Google OAuth client id and secret. To create a Google OAuth client as a Google Workspace admin you can follow the instrcutions <a %1$s>here</a>.', 'ftek-google-auth' ),
 							'href="https://support.google.com/cloud/answer/6158849" target="_blank" rel="noopener noreferrer"'
 						);
 						?>
@@ -258,7 +242,7 @@ class Settings {
 		ob_start();
 		?>
 		<a href="<?php echo esc_attr( $url ); ?>">
-			<?php esc_html_e( 'Settings', 'wp-google-auth' ); ?>
+			<?php esc_html_e( 'Settings', 'ftek-google-auth' ); ?>
 		</a>
 		<?php
 		$actions[] = ob_get_clean();
@@ -284,7 +268,7 @@ class Settings {
 	 */
 	public function rest_api_init(): void {
 		register_rest_route(
-			'wp-google-auth/v1',
+			'ftek-google-auth/v1',
 			'/validate/oauth-client',
 			array(
 				'methods'             => 'GET',

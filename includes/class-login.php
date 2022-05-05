@@ -2,26 +2,10 @@
 /**
  * Class managmenent of login page and login procedure
  *
- * WP Google Auth
- * Copyright (C) 2021  Ossian Eriksson
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * @package ftek/wp-google-auth
+ * @package ftek/google-auth
  */
 
-namespace Ftek\WPGoogleAuth;
+namespace Ftek\GoogleAuth;
 
 /**
  * Login page state.
@@ -324,25 +308,25 @@ class Login {
 			// phpcs:disable WordPress.Security.EscapeOutput.UnsafePrintingFunction
 			switch ( $action ) {
 				case 'missing_params':
-					$message = __( '<strong>Error</strong>: Malformatted response to OpenID authentication request. Please try logging in again later.', 'wp-google-auth' );
+					$message = __( '<strong>Error</strong>: Malformatted response to OpenID authentication request. Please try logging in again later.', 'ftek-google-auth' );
 					break;
 				case 'state_mismatch':
-					$message = __( '<strong>Error</strong>: Anti-forgery state token mismatch. Please try logging in again.', 'wp-google-auth' );
+					$message = __( '<strong>Error</strong>: Anti-forgery state token mismatch. Please try logging in again.', 'ftek-google-auth' );
 					break;
 				case 'discovery_doc':
-					$message = __( '<strong>Error</strong>: There was an error reading the Google API discovery document. Please try logging in again later.', 'wp-google-auth' );
+					$message = __( '<strong>Error</strong>: There was an error reading the Google API discovery document. Please try logging in again later.', 'ftek-google-auth' );
 					break;
 				case 'token':
-					$message = __( '<strong>Error</strong>: There was an error recieving the Google OAuth access token. Please try logging in again later.', 'wp-google-auth' );
+					$message = __( '<strong>Error</strong>: There was an error recieving the Google OAuth access token. Please try logging in again later.', 'ftek-google-auth' );
 					break;
 				case 'user_info':
-					$message = __( '<strong>Error</strong>: There was an error fetching user info from Google. Please try logging in again later.', 'wp-google-auth' );
+					$message = __( '<strong>Error</strong>: There was an error fetching user info from Google. Please try logging in again later.', 'ftek-google-auth' );
 					break;
 				case 'access_denied':
-					$message = __( '<strong>Error</strong>: Sorry, your account cannot login to this site.', 'wp-google-auth' );
+					$message = __( '<strong>Error</strong>: Sorry, your account cannot login to this site.', 'ftek-google-auth' );
 					break;
 				default:
-					$message = __( '<strong>Error</strong>: OpenID login error. Please try logging in again later.', 'wp-google-auth' );
+					$message = __( '<strong>Error</strong>: OpenID login error. Please try logging in again later.', 'ftek-google-auth' );
 			}
 			// phpcs:enable
 			$error->add( 'wp_google_auth_' . $action, $message );
@@ -351,7 +335,7 @@ class Login {
 				'wp_google_auth_noopenid_notice',
 				sprintf(
 					// translators: %s: Anchor attributes.
-					__( 'Since the Google OpenID login failed, you were taken to the default WordPress login page. If you want to attempt another sign in with Google, click <a %s>here</a>.', 'wp-google-auth' ),
+					__( 'Since the Google OpenID login failed, you were taken to the default WordPress login page. If you want to attempt another sign in with Google, click <a %s>here</a>.', 'ftek-google-auth' ),
 					'href="' . wp_login_url() . '"'
 				),
 				'message'

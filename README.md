@@ -1,48 +1,30 @@
-# wp-google-auth
+# ftek-google-auth
 
 WordPress plugin for syncing WordPress users with Google Workspace users.
 
-## Prerequisites
+## Dependencies
 
-Things to install before you start developing.
+-   PHP (^7.4.x)
+-   WordPress (>=5.9.x)
 
-### WSL (Windows only)
+## Contributing
 
-This README will be aimed at people using a Linux environment. If you are using the Microsoft Windows operating system, you might want to use [WSL(2)](https://docs.microsoft.com/en-us/windows/wsl/), Windows Subsystem for Linux, for development of WordPress plugins. To install for example the [Debian](https://www.debian.org/intro/why_debian) linux distribution, run
+### VS Code
 
-```console
-wsl --install -d Debian
-```
+This project is set up for development with the editor/IDE [VS Code](https://code.visualstudio.com/). It is strongly recommended that you use this editor.
 
-If errors appear, make sure you have enabled hardware virtualization from your [BIOS](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode). After a successfull installation, you can enter the linux environment by searching for the distribution name ("Debian") from the start menu.
+### Devcontainer
 
-### PHP and Composer
+The project includes a [devcontainer](https://code.visualstudio.com/docs/remote/create-dev-container) configuration which contains all tools needed for development. To use this you need to install Docker (either CLI or [Docker Desktop](https://www.docker.com/products/docker-desktop/)), and the [remote development extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) after which you can simply select "Clone Repository in Container Volume..." from the Remote Explorer tab.
 
-Install PHP and [Composer](https://getcomposer.org/doc/00-intro.md) using your package manager. Composer is a package manager for PHP.
+After starting the devcontainer, WordPress will be accessable at <http://localhost:8888> on your local machine. After installing composer and npm dependencies and building javascript files (see [Getting Started](#getting-started)) you may log in to WordPress and activate your plugin. To log in, visit <http://localhost:8888/wp-login.php> and entering the default credentials:
 
-### Node.js and NPM
+-   Username: `admin`
+-   Password: `password`
 
-[Node.js](https://nodejs.org/en/about/) is a JavaScript runtime. It often comes bundeled with it's own package manager, [npm](https://docs.npmjs.com/about-npm). Installation instructions for both packages can be found [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+### Getting started
 
-### wp-env (optional)
-
-The npm package [@wordpress/env](https://www.npmjs.com/package/@wordpress/env) lets you test plugins inside [Docker](https://docs.docker.com/get-started/overview/) containers. First [install](https://docs.docker.com/get-docker/) and [start](https://docs.docker.com/config/daemon/systemd/) Docker, also install [Docker compose](https://docs.docker.com/compose/install/), then install `@wordpress/env` globally:
-
-```console
-npm install -g @wordpress/env
-```
-
-Some useful wp-env commands to be run from the plugin root directory are
-
-```console
-wp-env start   # Start local environment
-wp-env stop    # Stop local environment
-wp-env destroy # WARNING: This will permanently delete any posts, pages, media, etc. in the local WordPress installation.
-```
-
-## Getting started
-
-Install npm and Composer dependencies:
+Before continuing you must install npm and Composer dependencies:
 
 ```console
 npm install
@@ -55,7 +37,7 @@ During development, the following command will automatically rebuild code as sou
 npm run start
 ```
 
-You can check for (stylistic) errors in your code by running
+You should check for (stylistic) errors in your code by running
 
 ```console
 npm run lint
@@ -93,6 +75,12 @@ npm run i18n
 
 to scan the source code for translatable strings (which are stored in a POT file inside the `languages` folder) and update existing translations (PO files also stored inside `languages`) from the POT file. To edit an existing localization, edit the corresponding PO file. To create a new localization, copy the POT file to a new PO file inside `languages`. Assuming the POT file is named `my-text-domain.pot`, name the PO file `my-text-domain-{locale}.po`, for example `my-text-domain-en_US.po`. Lists of locale codes available in WordPress can be found [online](https://wpastra.com/docs/complete-list-wordpress-locale-codes/).
 
-## Licence
+## Releases
 
-Distributed under the GPL-3.0 License. See [LICENSE](./LICENCE) for more information.
+[GitHub Actions](https://github.com/features/actions) is configured to automatically create a new release when a new [tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) is pushed. Some useful commands are
+
+```console
+git tag                 # Lists existing tags
+git tag -a vx.x.x       # Creates a new tag for the specified version number
+git push --follow-tags  # Pushes commits and tags to the remote
+```

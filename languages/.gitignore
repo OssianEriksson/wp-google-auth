@@ -1,1 +1,3 @@
-wp-google-auth.pot
+*.pot
+*.mo
+*.json

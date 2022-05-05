@@ -1,22 +1,4 @@
-/*
-WP Google Auth
-Copyright (C) 2022  Ossian Eriksson
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
-import { render, useState, useEffect } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import {
 	Placeholder,
 	Spinner,
@@ -35,7 +17,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { trash, menu } from '@wordpress/icons';
 import structuredClone from '@ungap/structured-clone';
 
-import './index.scss';
+import styles from './index.module.scss';
 
 type RoleKey = string;
 export type Role = {
@@ -60,8 +42,8 @@ type SettingsObject = {
 
 const ErrorDisplay = (error: any): JSX.Element => (
 	<>
-		{__('The following error has occurred:', 'wp-google-auth')}
-		<pre className="error">{JSON.stringify(error, null, 4)}</pre>
+		{__('The following error has occurred:', 'ftek-google-auth')}
+		<pre className={styles['error']}>{JSON.stringify(error, null, 4)}</pre>
 	</>
 );
 
@@ -75,7 +57,7 @@ const NoticeBar = (): JSX.Element => {
 
 const SpinnerPlaceholder = (): JSX.Element => (
 	<Placeholder>
-		<div className="placeholder-center">
+		<div className={styles['placeholder-center']}>
 			<Spinner />
 		</div>
 	</Placeholder>
@@ -105,15 +87,15 @@ const EmailPatternSelector = ({
 	};
 
 	return (
-		<div className="email-pattern-row">
-			<div className="email-pattern-row-button">
+		<div className={styles['email-pattern-row']}>
+			<div className={styles['email-pattern-row-button']}>
 				<Button onClick={onDelete} isSecondary>
 					<Icon icon={trash} size={24} />
 				</Button>
 			</div>
-			<div className="email-pattern-row-center">
+			<div className={styles['email-pattern-row-center']}>
 				<TextControl
-					label={__('Email regex pattern', 'wp-google-auth')}
+					label={__('Email regex pattern', 'ftek-google-auth')}
 					onChange={(value: string) =>
 						onPatternChange({
 							regex: value,
@@ -123,10 +105,10 @@ const EmailPatternSelector = ({
 					value={pattern.regex}
 				/>
 			</div>
-			<div className="email-pattern-row-button">
+			<div className={styles['email-pattern-row-button']}>
 				<DropdownMenu
 					icon={menu}
-					label={__('Select roles', 'wp-google-auth')}
+					label={__('Select roles', 'ftek-google-auth')}
 				>
 					{() =>
 						availableRoles.map((role, i) => (
@@ -179,7 +161,7 @@ const SettingsContent = ({
 			});
 
 		apiFetch({
-			path: `/wp-google-auth/v1/validate/oauth-client?client_id=${option.client_id}&client_secret=${option.client_secret}`,
+			path: `/ftek-google-auth/v1/validate/oauth-client?client_id=${option.client_id}&client_secret=${option.client_secret}`,
 		})
 			.then((res) => {
 				const oauthClientErrors = res as string[];
@@ -203,7 +185,7 @@ const SettingsContent = ({
 								'success',
 								__(
 									'Settings saved! Please test out the login functionality to verify that everything is working as expected.',
-									'wp-google-auth'
+									'ftek-google-auth'
 								),
 								{ type: 'snackbar' }
 							);
@@ -216,26 +198,26 @@ const SettingsContent = ({
 
 	return (
 		<>
-			<h2>{__('OAuth Client', 'wp-google-auth')}</h2>
+			<h2>{__('OAuth Client', 'ftek-google-auth')}</h2>
 			<TextControl
-				label={__('Google OAuth client ID', 'wp-google-auth')}
+				label={__('Google OAuth client ID', 'ftek-google-auth')}
 				value={option.client_id}
 				onChange={(value: string) =>
 					setOption({ ...option, client_id: value })
 				}
 			/>
 			<TextControl
-				label={__('Google OAuth client secret', 'wp-google-auth')}
+				label={__('Google OAuth client secret', 'ftek-google-auth')}
 				value={option.client_secret}
 				onChange={(value: string) =>
 					setOption({ ...option, client_secret: value })
 				}
 			/>
-			<h2>{__('Account Settings', 'wp-google-auth')}</h2>
+			<h2>{__('Account Settings', 'ftek-google-auth')}</h2>
 			<p>
 				{__(
 					'Here you can enter regex pattern to be matched against user emails. For every match, you can select which roles should be applied to the user.',
-					'wp-google-auth'
+					'ftek-google-auth'
 				)}
 			</p>
 			{option.email_patterns.map((pattern, i) => (
@@ -266,11 +248,11 @@ const SettingsContent = ({
 				}}
 				isSecondary
 			>
-				{__('Add pattern', 'wp-google-auth')}
+				{__('Add pattern', 'ftek-google-auth')}
 			</Button>
-			<h2>{__('Miscellaneous Settings', 'wp-google-auth')}</h2>
+			<h2>{__('Miscellaneous Settings', 'ftek-google-auth')}</h2>
 			<TextControl
-				label={__('Cache refresh interval (hours)', 'wp-google-auth')}
+				label={__('Cache refresh interval (hours)', 'ftek-google-auth')}
 				type="number"
 				min="0"
 				value={option.cache_refresh}
@@ -279,7 +261,7 @@ const SettingsContent = ({
 				}
 			/>
 			<Button onClick={save} isPrimary>
-				{__('Save changes', 'wp-google-auth')}
+				{__('Save changes', 'ftek-google-auth')}
 			</Button>
 		</>
 	);
@@ -290,8 +272,8 @@ const SettingsPage = ({
 }: {
 	availableRoles: Role[];
 }): JSX.Element => (
-	<div className="wp-google-auth-settings">
-		<h1>{__('WP Google Auth Settings', 'wp-google-auth')}</h1>
+	<div>
+		<h1>{__('Ftek Google Auth Settings', 'ftek-google-auth')}</h1>
 		<SettingsContent availableRoles={availableRoles} />
 		<NoticeBar />
 	</div>
