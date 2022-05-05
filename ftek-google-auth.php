@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name:     Template WordPress Plugin
+ * Plugin Name:     Ftek Google Auth
  * Plugin URI:      https://github.com/fysikteknologsektionen/ftek-google-auth
- * Description:     GitHub template for a WordPress plugin
+ * Description:     WordPress plugin for syncing WordPress users with Google Workspace users
  * Author:          Ossian Eriksson
  * Author URI:      https://github.com/OssianEriksson
  * Text Domain:     ftek-google-auth
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.2.0
  *
  * @package ftek\ftek-google-auth
  */

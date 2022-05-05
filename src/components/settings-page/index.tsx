@@ -43,7 +43,7 @@ type SettingsObject = {
 const ErrorDisplay = (error: any): JSX.Element => (
 	<>
 		{__('The following error has occurred:', 'ftek-google-auth')}
-		<pre className={styles['error']}>{JSON.stringify(error, null, 4)}</pre>
+		<pre className={styles.error}>{JSON.stringify(error, null, 4)}</pre>
 	</>
 );
 
@@ -71,7 +71,7 @@ const EmailPatternSelector = ({
 }: {
 	pattern: EmailPattern;
 	onDelete: () => void;
-	onPatternChange: (pattern: EmailPattern) => void;
+	onPatternChange: (p: EmailPattern) => void;
 	availableRoles: Role[];
 }): JSX.Element => {
 	const toggleRole = (role: RoleKey, enable: boolean) => {

@@ -10,5 +10,11 @@ module.exports = {
 				tabWidth: 2,
 			},
 		},
+		{
+			files: '*.scss',
+			options: {
+				singleQuote: false,
+			},
+		},
 	],
 };

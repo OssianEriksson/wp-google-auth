@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Ftek Google Auth plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ftek Google Auth 1.0.0\n"
+"Project-Id-Version: Ftek Google Auth 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ftek-google-auth\n"
-"POT-Creation-Date: 2022-05-05T16:10:36+00:00\n"
+"POT-Creation-Date: 2022-05-05T16:49:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ossian Eriksson\n"
 "Language-Team: Svenska\n"
@@ -16,16 +16,19 @@ msgstr ""
 "X-Domain: ftek-google-auth\n"
 
 #. Plugin Name of the plugin
-msgid "Template WordPress Plugin"
-msgstr ""
+msgid "Ftek Google Auth"
+msgstr "Ftek Googleautentisering"
 
 #. Plugin URI of the plugin
 msgid "https://github.com/fysikteknologsektionen/ftek-google-auth"
 msgstr ""
 
 #. Description of the plugin
-msgid "GitHub template for a WordPress plugin"
+msgid ""
+"WordPress plugin for syncing WordPress users with Google Workspace users"
 msgstr ""
+"WordPress-plugin för synkronisering av WordPress-användare med Google "
+"Workspace-användare."
 
 #. Author of the plugin
 msgid "Ossian Eriksson"
@@ -205,12 +208,3 @@ msgstr "Spara ändringar"
 #: build/settings.tsx.js:1
 msgid "Ftek Google Auth Settings"
 msgstr "Inställningar för Ftek Googleautentisering"
-
-#~ msgid "Ftek Google Auth"
-#~ msgstr "Ftek Googleautentisering"
-
-#~ msgid ""
-#~ "WordPress plugin for syncing WordPress users with Google Workspace users."
-#~ msgstr ""
-#~ "WordPress-plugin för synkronisering av WordPress-användare med Google "
-#~ "Workspace-användare."

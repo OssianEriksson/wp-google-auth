@@ -9,7 +9,7 @@
 		"build:scripts": "wp-scripts build src/entrypoints/*.*",
 		"i18n": "npm run build:scripts && npm run i18n:pot && npm run i18n:po",
 		"i18n:pot": "composer exec -- wp i18n make-pot .",
-		"i18n:po": "cd languages && find . -name '*.po' -print -exec msgmerge -U --backup=none {} *.pot \\;",
+		"i18n:po": "( cd languages && find . -name '*.po' -print -exec msgmerge -U --backup=none {} *.pot \\; )",
 		"lint": "concurrently npm:lint:style npm:lint:js npm:lint:php",
 		"lint:style": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",

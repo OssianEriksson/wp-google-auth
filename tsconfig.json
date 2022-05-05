@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"plugins": [{ "name": "typescript-plugin-css-modules" }],
 		"jsx": "preserve",
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"resolveJsonModule": true
 	}
 }
